@@ -1,4 +1,32 @@
+import {React, useState ,useEffect} from 'react'
+import axios from 'axios'
 function Data(){
+    const URL="http://localhost:5000/"
+    const [totalBook,setTotalBook]=useState(0);
+    useEffect(()=>{
+      const getTotalBook=async()=>{
+        try{
+            const res =await axios.get(`${URL}book/totalbook`);
+            setTotalBook(res.data.message);
+        }catch(error){
+            console.log(error.message);
+        }
+      };
+      getTotalBook();
+    },[]);
+    const [totalUser,setTotalUser]=useState(0);
+    useEffect(()=>{
+      const getTotalUser=async()=>{
+        try{
+            const res =await axios.get(`${URL}user/totaluser`);
+            setTotalUser(res.data.message);
+            console.log(res.data);
+        }catch(error){
+            console.log(error.message);
+        }
+      };
+      getTotalUser();
+    },[]);
     return (
         <div className="row">
   <div className="col-md-6 col-xl-3 mb-4">
@@ -10,7 +38,7 @@ function Data(){
               <span>Total books</span>
             </div>
             <div className="text-dark fw-bold h5 mb-0">
-              <span>$40,000</span>
+              <span>{totalBook}</span>
             </div>
           </div>
           <div className="col-auto">
@@ -29,11 +57,11 @@ function Data(){
               <span>total users</span>
             </div>
             <div className="text-dark fw-bold h5 mb-0">
-              <span>$215,000</span>
+              <span>{totalUser}</span>
             </div>
           </div>
           <div className="col-auto">
-            <i className="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i className="fas fa-user-circle fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>

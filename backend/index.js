@@ -10,6 +10,8 @@ import auth from "./routers/auth.js"
  import { User } from "./models/schema.js"
  import { Strategy as GoogleStrategy } from "passport-google-oauth20";
  import  FacebookStrategy from 'passport-facebook'
+ import book from './routers/book.js'
+ import user from './routers/user.js'
  dotenv.config();
 const app = express();
 const port = 5000;
@@ -42,8 +44,15 @@ passport.use(
                 }
         
                 // Nếu người dùng không tồn tại, tạo một bản ghi mới
-                const newUser = await User.create({ googleId: profile.id });
-        
+                const newUser = await User.create({ 
+					name:profile.displayName,
+					email:"",
+					password:"",
+					googleId: profile.id,
+			 		facebookId:"",
+					penaltyNumber:0,
+					isChecked:false,
+					isMember:false });
                 // Gọi callback để tiếp tục quá trình xác thực
                 return callback(null, newUser);
               } catch (err) {
@@ -63,7 +72,8 @@ passport.use(new FacebookStrategy({
   async function (accessToken, refreshToken, profile, callback) {
 	try {
 		// Tìm kiếm người dùng trong cơ sở dữ liệu bằng Google ID
-		const existingUser = await User.findOne({ facebookId: profile.id });
+		const existingUser = await User.findOne({ facebookId:profile.id}
+			);
 
 		if (existingUser) {
 		  
@@ -71,9 +81,15 @@ passport.use(new FacebookStrategy({
 		}
 
 		// Nếu người dùng không tồn tại, tạo một bản ghi mới
-		const newUser = await User.create({ facebookId: profile.id });
-
-		// Gọi callback để tiếp tục quá trình xác thực
+		const newUser = await User.create({ 
+			name:profile.displayName,
+			email:"",
+			password:"",
+			googleId: "",
+			 facebookId:profile.id,
+			penaltyNumber:0,
+			isChecked:false,
+			isMember:false  });
 		return callback(null, newUser);
 	  } catch (err) {
 		// Xử lý lỗi nếu có
@@ -97,6 +113,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{console.log("thành công")}).catch(()=>{console.log("Thất bại")});
 app.use("/logins",logins);
 app.use("/auth",auth);
+app.use("/book",book);
+app.use("/user",user);
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });

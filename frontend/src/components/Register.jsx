@@ -4,7 +4,7 @@ import axios from 'axios';
 import {React, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 const URL="http://localhost:5000/";
-function Register(){
+function Register(pros){
     const registerWithGoogle = () => {
 		window.open(
 			`${URL}auth/google/library`,
@@ -44,7 +44,8 @@ function Register(){
                     password:userInfo.password
                 }});
                 console.log(res);
-                if(res.data==="oke"){
+                if(res.data.state==="oke"){
+                    pros.state(res.data.userId);
                     navigate("/homepage");
                 }
                 else{

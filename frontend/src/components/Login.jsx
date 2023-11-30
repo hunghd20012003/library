@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import avatar from "../img/koduck.png"
 const URL="http://localhost:5000/";
-function Login(){
+function Login(pros){
         const loginWithGoogle = () => {
             window.open(
                 `${URL}auth/google/library`,
@@ -35,7 +35,8 @@ function Login(){
                 email:user.email,
                 password:user.password
             }});
-            if(res.data==="ok"){
+            if(res.data.state==="ok"){
+                pros.state(res.data.userId);
                 navigate("/homepage");
             }
             else{
