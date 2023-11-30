@@ -1,14 +1,21 @@
 import mongoose from 'mongoose'
-export const User=mongoose.model("User",{
-    name:String,
+const userSchema=new mongoose.Schema({ 
     email:String,
-    phone: String,
+    password:String, 
+    googleId: String,
+    facebookId:String,
+});
+const userInfo=new mongoose.Schema({
+    userID:String,
+    name:String,
     penaltyNumber:Number,
     isChecked:Boolean,
     googleID: String,
     facebookID:String,
     isMember:Boolean
-});
+})
+export const UserInfo=mongoose.model("UserInfo",userInfo);
+export const User=mongoose.model("User",userSchema);
 export const Admin=mongoose.model("Admin",{
     name:String,
     email:String,
