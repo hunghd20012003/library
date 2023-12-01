@@ -1,35 +1,33 @@
-import React, {useState, useRef} from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useRef } from "react";
 import axios from "axios";
-function AddBook(){
+import { useNavigate } from "react-router-dom";
+function EditBook(){
     let navigate = useNavigate();
-    const fileInputRef = useRef(null);
-
-    const [book, setBook] = useState({
-        bookId:  "",
-        name: "",
-        author: "",
-        publishor: "",
-        category: "",
-        amount: "",
-        available:"",
-        image:""
-    });
-    function handleBack(){
-        navigate("/");
-    } 
-    function handleChange(event){
-        setBook(prebook => {
-            return {
-                ...prebook,
-                [event.target.name]:event.target.value
+    const { bookId } = useParams();
+    const [book, setBook] = useState({});
+    useEffect(() => {
+        const getBook = async () => {
+            try{
+                const res = await axios.get("http://localhost:5000/books/uniquebook", {params:{bookId: bookId}});
+                setBook(res.data);
+                console.log(res.data);
+            }catch(error){
+                console.log(error.message);
             }
-        })
-    }
-    function handleButtonClick(){
+        }
+        getBook();
+    }, [])
+
+    const fileInputRef = useRef(null);
+    const handleButtonClick = () => {
+    // Mở cửa sổ chọn file khi nút được nhấn
         fileInputRef.current.click();
-    }
-    function handleFileChange(event){
+    };
+
+    const handleFileChange = (event) => {
         const file = event.target.files[0];
         var reader = new FileReader();
         reader.readAsDataURL(file);
@@ -44,19 +42,32 @@ function AddBook(){
 
         }
         event.target.value = null;
+    };
+    
+    function handleChange(event){
+        setBook(prebook => {
+            return {
+                ...prebook,
+                [event.target.name]:event.target.value
+            }
+        })
+    }
+    function handleBack(){
+        navigate("/");
     }
     function handleSubmit(){
-        const addBook = async () => {
+        const updateBook = async () => {
             try{
-                const res = await axios.post("http://localhost:5000/books/", book);
+                const res = await axios.post("http://localhost:5000/books/update", book);
                 console.log(res.data);
-                alert("Thêm thành công");
+                alert("Cập nhật thành công");
             }catch(error){
-                alert("Thêm thất bại");
+                alert("Lỗi cập nhật")
             }
+            
         }
-        addBook();
-        navigate("/")
+        updateBook();
+        navigate("/");
     }
     return (
         <div id="wrapper">
@@ -187,21 +198,20 @@ function AddBook(){
                         </ul>
                     </div>
                 </nav>
+                {Object.keys(book).length > 0 &&
                 <div className="container-fluid">
-                    <h3 className="text-dark mb-4"><strong>ADD BOOK</strong></h3>
+                    <h3 className="text-dark mb-4"><strong>EDIT BOOK</strong></h3>
                     <div className="row mb-3">
                         <div className="col-lg-4">
                             <div className="card mb-3">
-                                <div className="card-body text-center shadow">
-                                {book.image === "" > 0 ? <img className="img-thumbnail mb-3 mt-4" src="../assets/img/dogs/image2.jpeg" width="160" height="160" alt="xyz"/> :  <img className="img-thumbnail mb-3 mt-4" src={book.image} width="160" height="160" alt="xyz"/>}
-                               
+                                <div className="card-body text-center shadow"><img className="img-thumbnail mb-3 mt-4" src={book.image} width="160" height="160" alt="xyz"/>
                                     <div className="mb-3"><button className="btn btn-primary btn-sm" type="button" onClick={handleButtonClick}>Change Photo</button>
-                                    <input
-                                        type="file"
-                                        style={{ display: 'none' }}
-                                        ref={fileInputRef}
-                                        onChange={handleFileChange}
-                                    />
+                                        <input
+                                            type="file"
+                                            style={{ display: 'none' }}
+                                            ref={fileInputRef}
+                                            onChange={handleFileChange}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +260,7 @@ function AddBook(){
                                                         <div className="mb-3"><label className="form-label" for="username"><strong>Book Title</strong></label><input className="form-control" type="text" id="book-title" name="name" value={book.name} onChange={handleChange}/></div>
                                                     </div>
                                                     <div className="col">
-                                                        <div className="mb-3"><label className="form-label" for="username"><strong>Book ID</strong></label><input className="form-control" type="text" id="bookID" name="bookId" value={book.bookId} onChange={handleChange}/></div>
+                                                        <div className="mb-3"><label className="form-label" for="username"><strong>Book ID</strong></label><input className="form-control" type="text" id="bookID" name="bookId" value={book.bookId} readOnly/></div>
                                                     </div>
                                                 </div>
                                                 <div className="row">
@@ -264,7 +274,7 @@ function AddBook(){
                                                 <div className="row">
                                                     <div className="col">
                                                         <div className="mb-3"><label className="form-label" for="first_name"><strong>Category</strong></label>
-                                                        <select className="form-select" value={book.category} name="category" onChange={handleChange}>
+                                                        <select className="form-select" id="category" value={book.category} name="category" onChange={handleChange}>
                                                                 <optgroup label="This is a group">
                                                                     <option value="Novel" selected="">Novel</option>
                                                                     <option value="Comics">Comics</option>
@@ -288,8 +298,8 @@ function AddBook(){
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer className="bg-white sticky-footer">
+                }</div>
+            <footer classNameName="bg-white sticky-footer">
                 <div className="container my-auto">
                     <div className="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
                 </div>
@@ -299,4 +309,4 @@ function AddBook(){
     );
 }
 
-export default AddBook;
+export default EditBook;

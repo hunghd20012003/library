@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function BookDetail(props){
+    let navigate = useNavigate();
     function handleDelete(){
         const deleteBook = async () => {
             try{
@@ -13,6 +15,10 @@ function BookDetail(props){
             }
         }
         deleteBook();
+        navigate("/")
+    }
+    function handleEdit(){
+        navigate(`/home/${props.bookId}`)
     }
     return (
         <tr>
@@ -23,7 +29,7 @@ function BookDetail(props){
             <td>{props.category}</td>
             <td>{props.amount}</td>
             <td>{props.available}</td>
-            <td><button className="btn btn-primary btn-sm border rounded-pill" type="button">Edit</button><button className="btn btn-danger btn-sm border rounded-pill" type="button" onClick={handleDelete}>Delete</button></td>
+            <td><button className="btn btn-primary btn-sm border rounded-pill" type="button" onClick={handleEdit}>Edit</button><button className="btn btn-danger btn-sm border rounded-pill" type="button" onClick={handleDelete}>Delete</button></td>
         </tr>
     )
 }
