@@ -1,86 +1,36 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-function LoanDetail(){
-    var i = 1;
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-    let navigate = useNavigate();
-    function handleBack(){
-        navigate("/manageLoan");
-    }
-    function BookDetail(props){
-        return (
-            <tr>
-                <td>{props.stt}</td>
-                <td>{props.bookId}</td>
-                <td>{props.name}</td>
-                <td>{props.publishor}</td>
-                <td>{props.author}</td>
-                <td>{props.category}</td>
-            </tr>
-        )
-    }
-    const { billID } = useParams();
-    const [bill, setBill] = useState({})
-    const [books, setBook] = useState([])
-    function handleChange(event){
-        setBill(preBill => {
-            return {
-                ...preBill,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
-    function handleUpdate(event){
-        const updateBill = async () => {
-            try{
-                const res = await axios.post("http://localhost:5000/loans/update", bill);
-                console.log(res.data);
-                alert("Cập nhật thành công");
-            }catch(error){
-                alert("Lỗi cập nhật")
-            }
-            
-        }
-        updateBill();
-        navigate("/manageLoan");
-    }
-    useEffect (() => {
-        const getBill = async () => {
-            try{
-                const res = await axios.get("http://localhost:5000/loans/unique", {params:{billID: billID}});
-                setBill(res.data.bill);
-                setBook(res.data.books);
-                console.log(res.data);
-            }catch(error){
-                console.log(error.message);
-            }
-        }
-        getBill();
-    },[])
-    return (
-        <div id="wrapper">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
         <nav className="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
             <div className="container-fluid d-flex flex-column p-0"><a className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="http://localhost:3000/">
                     <div className="sidebar-brand-icon rotate-n-15"><i className="fas fa-laugh-wink"></i></div>
                     <div className="sidebar-brand-text mx-3"><span>Library</span></div>
                 </a>
-                <hr className="sidebar-divider my-0"/>
+                <hr classNameName="sidebar-divider my-0">
                 <ul className="navbar-nav text-light" id="accordionSidebar">
                     <li className="nav-item"><a className="nav-link" href="index.html"><i className="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-book-open" style={{fontSize: 13}}></i>&nbsp;Book Management</a>
-                        <div className="dropdown-menu"><a className="dropdown-item" href="add-book.html" style={{paddingLeft: 30}}><i className="fas fa-plus"></i>&nbsp;Add new</a><a className="dropdown-item" href="manage-book.html" style={{paddingLeft: 30}}><i className="fas fa-bars"></i>&nbsp;Manage all</a></div>
+                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-book-open" style="font-size: 13px;"></i>&nbsp;Book Management</a>
+                        <div className="dropdown-menu"><a className="dropdown-item" href="add-book.html" style="padding-left: 30px;"><i className="fas fa-plus"></i>&nbsp;Add new</a><a className="dropdown-item" href="manage-book.html" style="padding-left: 30px;"><i className="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
-                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-users" style={{fontSize: 13}}></i>&nbsp;Manage User</a>
-                        <div className="dropdown-menu"><a className="dropdown-item" href="add-user.html" style={{paddingLeft: 30}}><i className="fas fa-plus"></i>&nbsp;Add new</a><a className="dropdown-item" href="manage-user.html" style={{paddingLeft: 30}}><i className="fas fa-bars"></i>&nbsp;Manage all</a></div>
+                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-users" style="font-size: 13px;"></i>&nbsp;Manage User</a>
+                        <div className="dropdown-menu"><a className="dropdown-item" href="add-user.html" style="padding-left: 30px;"><i className="fas fa-plus"></i>&nbsp;Add new</a><a className="dropdown-item" href="manage-user.html" style="padding-left: 30px;"><i className="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
-                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-book-reader" style={{fontSize: 13}}></i>&nbsp;Books Loan</a>
-                        <div className="dropdown-menu"><a className="dropdown-item" href="manage-loan.html" style={{paddingLeft: 30}}><i className="fas fa-bars"></i>&nbsp;Manage all</a></div>
+                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-book-reader" style="font-size: 13px;"></i>&nbsp;Books Loan</a>
+                        <div className="dropdown-menu"><a className="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i className="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
-                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-dollar-sign" style={{fontSize: 13}}></i>&nbsp;Subscriptions</a>
-                        <div className="dropdown-menu"><a className="dropdown-item" href="plans.html" style={{paddingLeft: 30}}><i className="fas fa-plus"></i>&nbsp;Plans</a><a className="dropdown-item" href="purchase-history.html" style={{paddingLeft: 30}}><i className="fas fa-bars"></i>&nbsp;Purchase History</a></div>
+                    <li className="nav-item dropdown"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-dollar-sign" style="font-size: 13px;"></i>&nbsp;Subscriptions</a>
+                        <div className="dropdown-menu"><a className="dropdown-item" href="plans.html" style="padding-left: 30px;"><i className="fas fa-plus"></i>&nbsp;Plans</a><a className="dropdown-item" href="purchase-history.html" style="padding-left: 30px;"><i className="fas fa-bars"></i>&nbsp;Purchase History</a></div>
                     </li>
                     <li className="nav-item"></li>
                     <li className="nav-item"></li>
@@ -98,13 +48,13 @@ function LoanDetail(){
                 <nav className="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
                     <div className="container-fluid"><button className="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i className="fas fa-bars"></i></button>
                         <form className="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div className="input-group"><input className="bg-light form-control border-0 small" type="text" placeholder="Search for ..."/><button className="btn btn-primary py-0" type="button"><i className="fas fa-search"></i></button></div>
+                            <div className="input-group"><input className="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button className="btn btn-primary py-0" type="button"><i className="fas fa-search"></i></button></div>
                         </form>
                         <ul className="navbar-nav flex-nowrap ms-auto">
                             <li className="nav-item dropdown d-sm-none no-arrow"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><i className="fas fa-search"></i></a>
                                 <div className="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
                                     <form className="me-auto navbar-search w-100">
-                                        <div className="input-group"><input className="bg-light form-control border-0 small" type="text" placeholder="Search for ..."/>
+                                        <div className="input-group"><input className="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
                                             <div className="input-group-append"><button className="btn btn-primary py-0" type="button"><i className="fas fa-search"></i></button></div>
                                         </div>
                                     </form>
@@ -142,7 +92,7 @@ function LoanDetail(){
                                 <div className="nav-item dropdown no-arrow"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><span className="badge bg-danger badge-counter">7</span><i className="fas fa-envelope fs-5 fa-fw"></i></a>
                                     <div className="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 className="dropdown-header">alerts center</h6><a className="dropdown-item d-flex align-items-center" href="http://localhost:3000/">
-                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar4.jpeg" alt="xyz"/>
+                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar4.jpeg" alt="xyz">
                                                 <div className="bg-success status-indicator"></div>
                                             </div>
                                             <div className="fw-bold">
@@ -150,7 +100,7 @@ function LoanDetail(){
                                                 <p className="small text-gray-500 mb-0">Emily Fowler - 58m</p>
                                             </div>
                                         </a><a className="dropdown-item d-flex align-items-center" href="http://localhost:3000/">
-                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar2.jpeg" alt="xyz"/>
+                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar2.jpeg" alt="xyz">
                                                 <div className="status-indicator"></div>
                                             </div>
                                             <div className="fw-bold">
@@ -158,7 +108,7 @@ function LoanDetail(){
                                                 <p className="small text-gray-500 mb-0">Jae Chun - 1d</p>
                                             </div>
                                         </a><a className="dropdown-item d-flex align-items-center" href="http://localhost:3000/">
-                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar3.jpeg" alt="xyz"/>
+                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar3.jpeg" alt="xyz">
                                                 <div className="bg-warning status-indicator"></div>
                                             </div>
                                             <div className="fw-bold">
@@ -166,7 +116,7 @@ function LoanDetail(){
                                                 <p className="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
                                             </div>
                                         </a><a className="dropdown-item d-flex align-items-center" href="http://localhost:3000/">
-                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar5.jpeg" alt="xyz"/>
+                                            <div className="dropdown-list-image me-3"><img className="rounded-circle" src="../assets/img/avatars/avatar5.jpeg" alt="xyz">
                                                 <div className="bg-success status-indicator"></div>
                                             </div>
                                             <div className="fw-bold">
@@ -180,96 +130,107 @@ function LoanDetail(){
                             </li>
                             <div className="d-none d-sm-block topbar-divider"></div>
                             <li className="nav-item dropdown no-arrow">
-                                <div className="nav-item dropdown no-arrow"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><span className="d-none d-lg-inline me-2 text-gray-600 small">Hello admin</span><img className="border rounded-circle img-profile" src="../assets/img/avatars/avatar1.jpeg" alt="xyz"/></a>
+                                <div className="nav-item dropdown no-arrow"><a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="http://localhost:3000/"><span className="d-none d-lg-inline me-2 text-gray-600 small">Hello admin</span><img className="border rounded-circle img-profile" src="../assets/img/avatars/avatar1.jpeg" alt="xyz"></a>
                                     <div className="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a className="dropdown-item" href="http://localhost:3000/"><i className="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a className="dropdown-item" href="http://localhost:3000/"><i className="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a className="dropdown-item" href="http://localhost:3000/"><i className="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div className="dropdown-divider"></div><a className="dropdown-item" href="http://localhost:3000/"><i className="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
                             </li>
-                        </ul>
+                        </ulhttp://127.0.0.1:3000/register.html>
                     </div>
                 </nav>
-                {Object.keys(bill).length > 0 && books.length > 0 &&
                 <div className="container-fluid">
-                    <h3 className="text-dark mb-4">Bill Detail</h3>
-                    <div className="card shadow mb-3">
-                        <div className="card-header py-3">
-                            <p className="text-primary m-0 fw-bold">Bill Detail</p>
-                        </div>
-                        <div className="card-body">
-                            <form>
-                                <div className="row">
-                                    <div className="col">
-                                        <div className="mb-3"><label className="form-label" for="username"><strong>BILL ID</strong></label><input className="form-control" type="text" value={bill.billID}/></div>
-                                    </div>
-                                    <div className="col">
-                                        <div className="mb-3"><label className="form-label" for="username"><strong>USER ID</strong></label><input className="form-control" type="text" id="bookID" name="userId" value={bill.userId}/></div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col">
-                                        <div className="mb-3"><label className="form-label" for="first_name"><strong>Status</strong></label>
-                                        <select value={bill.state} onChange={handleChange} name="state" className="form-select">
-                                                <option value="Returned">Returned</option>
-                                                <option value="Borrowed">Borrowed</option>
-                                                <option value="Overdue">Overdue</option>
-                                                <option value="Waiting">Waiting</option>
-                                            </select></div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col">
-                                        <div className="mb-3"><label className="form-label" for="first_name"><strong><span style={{color: 'rgb(0, 0, 0)'}}>Borrow Date</span></strong></label><input className="form-control" type="date" value={bill.borrowDate}/></div>
-                                    </div>
-                                    <div className="col">
-                                        <div className="mb-3"><label className="form-label" for="first_name"><strong><span style={{color: 'rgb(0, 0, 0)'}}>Expire date</span></strong></label><input className="form-control" type="date" value={bill.expireDate}/></div>
-                                    </div>
-                                    <div className="col">
-                                        <div className="mb-3"><label className="form-label" for="first_name"><strong><span style={{color: 'rgb(0, 0, 0)'}}>Return Date</span></strong></label><input className="form-control" type="date" value={bill.returnDate}/></div>
-                                    </div>
-                                </div>
-                                <div className="mb-3"><button className="btn btn-success btn-sm" type="submit" onClick={handleUpdate} style={{marginTop: 17}}>Update</button><button className="btn btn-secondary btn-sm" type="submit" style={{marginTop: 17, marginLeft: 5}} onClick={handleBack}>Back</button></div>
-                            </form>
-                        </div>
-                    </div>
+                    <h3 className="text-dark mb-4"><strong>Manage User</strong></h3>
                     <div className="card shadow">
                         <div className="card-header py-3">
-                            <p className="text-primary m-0 fw-bold">Book loan</p>
+                            <p className="text-primary m-0 fw-bold">All users</p>
                         </div>
                         <div className="card-body">
+                            <div className="row">
+                                <div className="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" className="dataTables_length" aria-controls="dataTable"><label className="form-label">Show&nbsp;<select className="d-inline-block form-select form-select-sm">
+                                                <option value="10" selected="">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>&nbsp;</label></div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="text-md-end dataTables_filter" id="dataTable_filter"><label className="form-label"><input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                                </div>
+                            </div>
                             <div className="table-responsive text-nowrap table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table className="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Book ID</th>
-                                            <th>Book name</th>
-                                            <th>Publisher</th>
-                                            <th>Author</th>
+                                            <th>User ID</th>
+                                            <th>Username</th>
                                             <th>Category</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Reminder</th>
+                                            <th>Penalty</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {books.map(book => {
-                                            return <BookDetail key={book.bookId} stt={i++} bookId={book.bookId} name={book.name} publishor={book.publishor} author={book.author} category={book.category}/>
-                                        })}
-                                    </tbody>
-                                    <tfoot>
                                         <tr>
-                                            <td><strong>#</strong></td>
-                                            <td><strong>Book ID</strong></td>
-                                            <td><strong>Book name</strong></td>
-                                            <td><strong>Publisher</strong></td>
-                                            <td><strong>Author</strong></td>
-                                            <td><strong>Category</strong></td>
+                                            <td>1</td>
+                                            <td>20215346</td>
+                                            <td>Trương Công Đạt</td>
+                                            <td>Student</td>
+                                            <td>Dat.tc215346@sis.hust.eduvn</td>
+                                            <td>0941118736</td>
+                                            <td className="text-center">∞</td>
+                                            <td className="text-center">0</td>
+                                            <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a><button className="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
                                         </tr>
-                                    </tfoot>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>20215452</td>
+                                            <td>Nguyễn Hoàng Phúc</td>
+                                            <td>Member</td>
+                                            <td>Phuc.NH215452@sis.hust.edu.vn</td>
+                                            <td>0912214811</td>
+                                            <td className="text-center">2 months</td>
+                                            <td className="text-center">0</td>
+                                            <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a><button className="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>20215451</td>
+                                            <td>Hoàng Công Phú</td>
+                                            <td>Student</td>
+                                            <td>Phu.HC215451@sis.hust.edu.vn</td>
+                                            <td>0971234213</td>
+                                            <td className="text-center">∞</td>
+                                            <td className="text-center">0</td>
+                                            <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a><button className="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6 align-self-center">
+                                    <p id="dataTable_info" className="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div className="col-md-6">
+                                    <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul className="pagination">
+                                            <li className="page-item disabled"><a className="page-link" aria-label="Previous" href="http://localhost:3000/"><span aria-hidden="true">«</span></a></li>
+                                            <li className="page-item active"><a className="page-link" href="http://localhost:3000/">1</a></li>
+                                            <li className="page-item"><a className="page-link" href="http://localhost:3000/">2</a></li>
+                                            <li className="page-item"><a className="page-link" href="http://localhost:3000/">3</a></li>
+                                            <li className="page-item"><a className="page-link" aria-label="Next" href="http://localhost:3000/"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            }</div>
+            </div>
             <footer className="bg-white sticky-footer">
                 <div className="container my-auto">
                     <div className="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
@@ -277,7 +238,9 @@ function LoanDetail(){
             </footer>
         </div><a className="border rounded d-inline scroll-to-top" href="#page-top"><i className="fas fa-angle-up"></i></a>
     </div>
-    )
-}
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
+    <script src="../assets/js/theme.js"></script>
+</body>
 
-export default LoanDetail;
+</html>

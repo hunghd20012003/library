@@ -12,11 +12,12 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route index element={<LoanDetail />} />
+        <Route index element={<ManageBook />} />
         <Route path='/manageLoan' element={<ManageLoan />} />
         <Route path='/manageBook' element={<ManageBook />} />
         <Route path='/addBook/' element={<AddBook />}/>
-        <Route path='/home/:bookId' element={<EditBook />}/>
+        <Route path='/manageBook/:bookId' element={<EditBook />}/>
+        <Route path='/manageLoan/:billID' element={<LoanDetail />}/>
       </Routes>
     </BrowserRouter>
     

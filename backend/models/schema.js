@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import format from 'date-fns';
 export const User=mongoose.model("User",{
     name:String,
     email:String,
@@ -30,11 +31,13 @@ export const Book=mongoose.model("Book",{
 export const Bill=mongoose.model("Bill",{
     billID:String,
     userId:String,
-    borrowDate: Date,
-    returnDate:Date,
-    expireDate:Date,
+    borrowDate: String,
+    returnDate: String,
+    expireDate: String,
     state:String,
-    borrowedBook:[String]
+    borrowedBooks:[{
+        bookId: String
+    }]
 });
 export const Plan=mongoose.model("Plan",{
     title:String,

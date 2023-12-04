@@ -1,4 +1,30 @@
+import React, {useState, useEffect} from "react";
+import LoanRow from "./LoanRow";
+import axios from "axios";
 function ManageLoan(){
+    var i = 1;
+    const [bills, setBills] = useState([]);
+    useEffect(() => {
+        const updateState = async () => {
+            try{
+                const res =  await axios.get("http://localhost:5000/loans/updateState");
+                console.log(res.data.tt);
+            }catch(error){
+                console.log(error);
+            }
+        }
+        const getBills = async () => {
+            try{
+                const res = await axios.get("http://localhost:5000/loans/");
+                setBills(res.data);
+                console.log(res.data);
+            }catch(error){
+                console.log(error.message);
+            }
+        }
+        updateState();
+        getBills();
+    }, [])
     return (
         <div id="wrapper">
         <nav className="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
@@ -155,52 +181,23 @@ function ManageLoan(){
                                             <th>#</th>
                                             <th>Bill ID</th>
                                             <th>Student ID</th>
-                                            <th>Student name</th>
-                                            <th>Loan Date</th>
+                                            <th>Borrow Date</th>
                                             <th>Return date</th>
                                             <th>Status</th>
                                             <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>283u21</td>
-                                            <td>3 books</td>
-                                            <td>Trương Công Đạt</td>
-                                            <td>2008/11/28</td>
-                                            <td>2008/11/28</td>
-                                            <td>Waiting</td>
-                                            <td><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="loan-detail.html">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>987213</td>
-                                            <td>1</td>
-                                            <td>Hoàng Đình Hùng</td>
-                                            <td>2008/11/28</td>
-                                            <td>2009/10/09<br/></td>
-                                            <td>Borrowed</td>
-                                            <td><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="loan-detail.html">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>971311</td>
-                                            <td>2 books</td>
-                                            <td>Nguyễn Hoàng Phúc</td>
-                                            <td>2008/11/28</td>
-                                            <td>2009/01/12<br/></td>
-                                            <td>Overdue</td>
-                                            <td><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="loan-detail.html">View</a></td>
-                                        </tr>
+                                        {bills.length > 0 && bills.map(bill => {
+                                            return <LoanRow key={bill.billID} stt={i++} billID={bill.billID} userId={bill.userId} borrowDate={bill.borrowDate} returnDate={bill.returnDate} state={bill.state}/>
+                                        })}
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td><strong>#</strong></td>
                                             <td><strong>Bill ID</strong></td>
                                             <td><strong>Student ID</strong></td>
-                                            <td><strong>Student name</strong></td>
-                                            <td><strong>Load Date</strong></td>
+                                            <td><strong>Borrow Date</strong></td>
                                             <td><strong>Return date</strong></td>
                                             <td><strong>Status</strong></td>
                                         </tr>
