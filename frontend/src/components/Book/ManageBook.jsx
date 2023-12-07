@@ -2,19 +2,243 @@ import React, {useState, useEffect} from "react";
 import BookDetail from "./BookDetail";
 import axios from "axios";
 function ManageBook(){
+    var i = 1;
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(3);
     const [books, setBooks] = useState([]);
+    const [search, setSearch] = useState("");
+    const [question, setQuestion] = useState("")
     useEffect(() => {
         const getBooks = async () => {
             try{
-                const res = await axios.get("http://localhost:5000/books/");
-                setBooks(res.data);
-                console.log(res.data);
+                if (search === "name"){
+                    console.log("name");
+                    const res = await axios.get("http://localhost:5000/books/name", {params: {page: page, limit: limit, question: question}});
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "bookId"){
+                    console.log("bookId");
+                    const res = await axios.get("http://localhost:5000/books/bookId", {params: {page: page, limit: limit, question: question}});
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "author"){
+                    console.log("author");
+                    const res = await axios.get("http://localhost:5000/books/author", {params: {page: page, limit: limit, question: question}})
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "publishor"){
+                    console.log("publishor");
+                    const res = await axios.get("http://localhost:5000/books/publishor", {params: {page: page, limit: limit, question: question}});
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "category"){
+                    console.log("category");
+                    const res = await axios.get("http://localhost:5000/books/category", {params: {page: page, limit: limit, question: question}});
+                    setBooks(res.data);
+                    console.log(page);
+                }else{
+                    console.log("abc");
+                    const res = await axios.get("http://localhost:5000/books/page", {params: {page: page, limit: limit}});
+                    setBooks(res.data);
+                    console.log(page);
+                }
             }catch(error){
                 console.log(error.message);
             }
         }
         getBooks();
-    }, [])
+    }, [page])
+    function handleFirstPage(){
+        const getBooks = async () => {
+            try{
+                setPage(1)
+                console.log(page);
+            }catch(error){
+                console.log(error.message);
+            }
+        }
+        getBooks();
+    }
+    function handleNextPage(){
+        const getBooks = async () => {
+            try{
+                setPage((prePage) => prePage + 1)
+            }catch(error){
+                console.log(error.message);
+            }
+        }
+        getBooks();
+    }
+    function handlePreviousPage(){
+        const getBooks = async () => {
+            try{
+                setPage((prePage) => prePage - 1)
+            }catch(error){
+                console.log(error.message);
+            }
+        }
+        getBooks();
+    }
+    function handleLastPage(){
+        const getBooks = async () => {
+            try{
+                if (search === "name"){
+                    const res = await axios.get("http://localhost:5000/books/nameLastPage", {params: {limit: limit, question: question}});
+                    setPage(res.data.page)
+                    setBooks(res.data.books);
+                    console.log(page);
+                }
+                else if(search === "bookId"){
+                    const res = await axios.get("http://localhost:5000/books/bookIdLastPage", {params: {limit: limit, question: question}});
+                    setPage(res.data.page)
+                    setBooks(res.data.books);
+                    console.log(page);
+                }
+                else if(search === "author"){
+                    const res = await axios.get("http://localhost:5000/books/authorLastPage", {params: {limit: limit, question: question}});
+                    setPage(res.data.page)
+                    setBooks(res.data.books);
+                    console.log(page);
+                }
+                else if(search === "publishor"){
+                    const res = await axios.get("http://localhost:5000/books/publishorLastPage", {params: {limit: limit, question: question}});
+                    setPage(res.data.page)
+                    setBooks(res.data.books);
+                    console.log(page);
+                }
+                else if(search === "category"){
+                    const res = await axios.get("http://localhost:5000/books/categoryLastPage", {params: {limit: limit, question: question}});
+                    setPage(res.data.page)
+                    setBooks(res.data.books);
+                    console.log(page);
+                }else{
+                    const res = await axios.get("http://localhost:5000/books/lastpage", {params: {limit: limit}});
+                    setPage(res.data.page)
+                    setBooks(res.data.books);
+                    console.log(page);
+                }
+            }catch(error){
+                console.log(error.message);
+            }
+        }
+        getBooks();
+    }
+    function handleChangeLimit(event){
+        const getBooks = async () => {
+            try{
+                if (search === "name"){
+                    const res = await axios.get("http://localhost:5000/books/name", {params: {page: 1, limit: event.target.value, question: question}});
+                    setPage(1)
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "bookId"){
+                    const res = await axios.get("http://localhost:5000/books/bookId", {params: {page: 1, limit: event.target.value, question: question}});
+                    setPage(1)
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "author"){
+                    const res = await axios.get("http://localhost:5000/books/author", {params: {page: 1, limit: event.target.value, question: question}});
+                    setPage(1)
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "publishor"){
+                    const res = await axios.get("http://localhost:5000/books/publishor", {params: {page: 1, limit: event.target.value, question: question}});
+                    setPage(1)
+                    setBooks(res.data);
+                    console.log(page);
+                }
+                else if(search === "category"){
+                    const res = await axios.get("http://localhost:5000/books/category", {params: {page: 1, limit: event.target.value, question: question}});
+                    setPage(1)
+                    setBooks(res.data);
+                    console.log(page);
+                }else{
+                    const res = await axios.get("http://localhost:5000/books/page", {params: {page: 1, limit: event.target.value}});
+                    setPage(1)
+                    setBooks(res.data);
+                    console.log(page);
+                }
+            }catch(error){
+                console.log(error.message);
+            }
+        }
+        setLimit(event.target.value); 
+        getBooks();       
+    }
+    function handleChangeSearch(event){
+        setSearch(event.target.value)       
+    }
+    function handleChangeQuestion(event){
+        setQuestion(event.target.value)
+        setPage(1);
+        if(search === "name"){
+            const getBooks = async () => {
+                try{
+                    const res = await axios.get("http://localhost:5000/books/name", {params: {page: 1, limit: limit, question: event.target.value}});
+                    setBooks(res.data);
+                    console.log(page);
+                }catch(error){
+                    console.log(error.message);
+                }
+            }
+            getBooks();
+        }
+        else if(search === "bookId"){
+            const getBooks = async () => {
+                try{
+                    const res = await axios.get("http://localhost:5000/books/bookId", {params: {page: 1, limit: limit, question: event.target.value}});
+                    setBooks(res.data);
+                    console.log(page);
+                }catch(error){
+                    console.log(error.message);
+                }
+            }
+            getBooks();
+        }
+        else if(search === "author"){
+            const getBooks = async () => {
+                try{
+                    const res = await axios.get("http://localhost:5000/books/author", {params: {page: 1, limit: limit, question: event.target.value}});
+                    setBooks(res.data);
+                    console.log(page);
+                }catch(error){
+                    console.log(error.message);
+                }
+            }
+            getBooks();
+        }
+        else if(search === "publishor"){
+            const getBooks = async () => {
+                try{
+                    const res = await axios.get("http://localhost:5000/books/publishor", {params: {page: 1, limit: limit, question: event.target.value}});
+                    setBooks(res.data);
+                    console.log(page);
+                }catch(error){
+                    console.log(error.message);
+                }
+            }
+            getBooks();
+        }
+        else if(search === "category"){
+            const getBooks = async () => {
+                try{
+                    const res = await axios.get("http://localhost:5000/books/category", {params: {page: 1, limit: limit, question: event.target.value}});
+                    setBooks(res.data);
+                    console.log(page);
+                }catch(error){
+                    console.log(error.message);
+                }
+            }
+            getBooks();
+        }
+    }
     return (
         <div id="wrapper">
         <nav className="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
@@ -153,30 +377,33 @@ function ManageBook(){
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" className="dataTables_length" aria-controls="dataTable"><label className="form-label">Show&nbsp;<select className="d-inline-block form-select form-select-sm">
-                                                <option value="10" selected="">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
+                                    <div id="dataTable_length" className="dataTables_length" aria-controls="dataTable"><label className="form-label">Show&nbsp;
+                                    <select value={limit} onChange={handleChangeLimit} className="d-inline-block form-select form-select-sm">
+                                                <option value="3">3</option>
+                                                <option value="5">5</option>
+                                                <option value="7">7</option>
+                                                <option value="10">10</option>
                                             </select>&nbsp;</label></div>
                                 </div>
                                 <div className="col-md-6">
-                                    <div className="text-md-end dataTables_filter" id="dataTable_filter"><label className="form-label" style={{marginRight: 12}}>Filter by</label><select style={{marginRight: 23}}>
+                                    <div className="text-md-end dataTables_filter" id="dataTable_filter"><label className="form-label" style={{marginRight: 12}}>Filter by</label>
+                                    <select value={search} onChange={handleChangeSearch} style={{marginRight: 23}}>
                                             <optgroup label="Filter">
-                                                <option value="12">Book name</option>
-                                                <option value="13">Book ID</option>
-                                                <option value="14">Publisher</option>
-                                                <option value="15">Author</option>
-                                                <option value="">Category</option>
+                                                <option value="name">Book name</option>
+                                                <option value="bookId">Book ID</option>
+                                                <option value="publishor">Publisher</option>
+                                                <option value="author">Author</option>
+                                                <option value="category">Category</option>
                                                 <option value="" selected="">None</option>
                                             </optgroup>
-                                        </select><label className="form-label"><input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"/></label></div>
+                                        </select><label className="form-label"><input type="search" className="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" value={question} onChange={handleChangeQuestion}/></label></div>
                                 </div>
                             </div>
                             <div className="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table className="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Book ID</th>
                                             <th>Book name</th>
                                             <th>Publisher</th>
@@ -189,11 +416,12 @@ function ManageBook(){
                                     </thead>
                                     <tbody>
                                         {books.length > 0 && books.map(book => {
-                                            return <BookDetail bookId={book.bookId} name={book.name} author={book.author} publishor={book.publishor} category={book.category} amount={book.amount} available={book.available}/>
+                                            return <BookDetail stt={i++} bookId={book.bookId} name={book.name} author={book.author} publishor={book.publishor} category={book.category} amount={book.amount} available={book.available}/>
                                         })}
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <td><strong>#</strong></td>
                                             <td><strong>Book ID</strong></td>
                                             <td><strong>Book name</strong></td>
                                             <td><strong>Publisher</strong></td>
@@ -208,16 +436,15 @@ function ManageBook(){
                             </div>
                             <div className="row">
                                 <div className="col-md-6 align-self-center">
-                                    <p id="dataTable_info" className="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
                                 </div>
                                 <div className="col-md-6">
                                     <nav className="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                                         <ul className="pagination">
-                                            <li className="page-item disabled"><a className="page-link" aria-label="Previous" href="http://localhost:3000/"><span aria-hidden="true">«</span></a></li>
-                                            <li className="page-item active"><a className="page-link" href="http://localhost:3000/">1</a></li>
-                                            <li className="page-item"><a className="page-link" href="http://localhost:3000/">2</a></li>
-                                            <li className="page-item"><a className="page-link" href="http://localhost:3000/">3</a></li>
-                                            <li className="page-item"><a className="page-link" aria-label="Next" href="http://localhost:3000/"><span aria-hidden="true">»</span></a></li>
+                                            <li className="page-item"><button className="page-link" aria-label="Previous" onClick={handlePreviousPage}><span aria-hidden="true">«</span></button></li>
+                                            <li className="page-item active"><button className="page-link" onClick={handleFirstPage}>1</button></li>
+                                            <li className="page-item"><button className="page-link">...</button></li>
+                                            <li className="page-item"><button className="page-link" onClick={handleLastPage}>End</button></li>
+                                            <li className="page-item"><button className="page-link" aria-label="Next" onClick={handleNextPage}><span aria-hidden="true">»</span></button></li>
                                         </ul>
                                     </nav>
                                 </div>

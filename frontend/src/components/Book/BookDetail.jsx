@@ -18,10 +18,11 @@ function BookDetail(props){
         navigate("/")
     }
     function handleEdit(){
-        navigate(`/home/${props.bookId}`)
+        navigate(`/manageBook/${props.bookId}`)
     }
     return (
         <tr>
+            <td>{props.stt}</td>
             <td>{props.bookId}</td>
             <td>{props.name}</td>
             <td>{props.publishor}</td>

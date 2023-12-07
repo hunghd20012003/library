@@ -54,3 +54,230 @@ export const deleteBook = async (req, res) => {
         res.status(500).json({tt: "ERR" });
       }
 };
+
+export const getPage = async (req, res) =>{
+    try{
+      var page = req.query.page;
+      var limit = req.query.limit;
+      if(page && limit){
+        page = parseInt(page)
+        limit = parseInt(limit)
+        if(page < 1){
+          page = 1;
+        }
+        var soluongboqua = (page-1)*limit
+        const books = await Book.find().skip(soluongboqua).limit(limit);
+        res.status(200).json(books);
+      }
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+}
+
+export const getLastPage = async(req, res) => {
+      try{
+        var limit = req.query.limit;
+        if(limit){
+          limit = parseInt(limit);
+          const count = await Book.countDocuments();
+          const page = Math.floor(count / limit) + 1;
+          const books = await Book.find().skip((page-1) * limit).limit(limit);
+          res.status(200).json({
+            books: books,
+            page: page
+          })
+        }
+      }catch(err){
+        res.status(500).json({error: err})
+      }
+}
+export const namePage = async (req, res) =>{
+  try{
+    var page = req.query.page;
+    var limit = req.query.limit;
+    var s = req.query.question;
+    if(page && limit){
+      page = parseInt(page)
+      limit = parseInt(limit)
+      if(page < 1){
+        page = 1;
+      }
+      var soluongboqua = (page-1)*limit
+      const books = await Book.find({ name: { $regex: new RegExp(s, "i") } }).skip(soluongboqua).limit(limit);
+      res.status(200).json(books);
+    }
+  }catch(err){
+    res.status(500).json({error: err})
+  }
+}
+
+export const nameLastPage = async(req, res) => {
+    try{
+      var limit = req.query.limit;
+      var s = req.query.question;
+      if(limit){
+        limit = parseInt(limit);
+        const count = await Book.countDocuments();
+        const page = Math.floor(count / limit) + 1;
+        const books = await Book.find({ name: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
+        res.status(200).json({
+          books: books,
+          page: page
+        })
+      }
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+}
+export const bookIdPage = async (req, res) =>{
+  try{
+    var page = req.query.page;
+    var limit = req.query.limit;
+    var s = req.query.question;
+    if(page && limit){
+      page = parseInt(page)
+      limit = parseInt(limit)
+      if(page < 1){
+        page = 1;
+      }
+      var soluongboqua = (page-1)*limit
+      const books = await Book.find({ bookId: { $regex: new RegExp(s, "i") } }).skip(soluongboqua).limit(limit);
+      res.status(200).json(books);
+    }
+  }catch(err){
+    res.status(500).json({error: err})
+  }
+}
+
+export const bookIdLastPage = async(req, res) => {
+    try{
+      var limit = req.query.limit;
+      var s = req.query.question;
+      if(limit){
+        limit = parseInt(limit);
+        const count = await Book.countDocuments();
+        const page = Math.floor(count / limit) + 1;
+        const books = await Book.find({ bookId: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
+        res.status(200).json({
+          books: books,
+          page: page
+        })
+      }
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+}
+export const authorPage = async (req, res) =>{
+  try{
+    var page = req.query.page;
+    var limit = req.query.limit;
+    var s = req.query.question;
+    if(page && limit){
+      page = parseInt(page)
+      limit = parseInt(limit)
+      if(page < 1){
+        page = 1;
+      }
+      var soluongboqua = (page-1)*limit
+      const books = await Book.find({ author: { $regex: new RegExp(s, "i") } }).skip(soluongboqua).limit(limit);
+      res.status(200).json(books);
+    }
+  }catch(err){
+    res.status(500).json({error: err})
+  }
+}
+
+export const authorLastPage = async(req, res) => {
+    try{
+      var limit = req.query.limit;
+      var s = req.query.question;
+      if(limit){
+        limit = parseInt(limit);
+        const count = await Book.countDocuments();
+        const page = Math.floor(count / limit) + 1;
+        const books = await Book.find({ author: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
+        res.status(200).json({
+          books: books,
+          page: page
+        })
+      }
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+}
+export const publishorPage = async (req, res) =>{
+  try{
+    var page = req.query.page;
+    var limit = req.query.limit;
+    var s = req.query.question;
+    if(page && limit){
+      page = parseInt(page)
+      limit = parseInt(limit)
+      if(page < 1){
+        page = 1;
+      }
+      var soluongboqua = (page-1)*limit
+      const books = await Book.find({ publishor: { $regex: new RegExp(s, "i") } }).skip(soluongboqua).limit(limit);
+      res.status(200).json(books);
+    }
+  }catch(err){
+    res.status(500).json({error: err})
+  }
+}
+
+export const publishorLastPage = async(req, res) => {
+    try{
+      var limit = req.query.limit;
+      var s = req.query.question;
+      if(limit){
+        limit = parseInt(limit);
+        const count = await Book.countDocuments();
+        const page = Math.floor(count / limit) + 1;
+        const books = await Book.find({ publishor: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
+        res.status(200).json({
+          books: books,
+          page: page
+        })
+      }
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+}
+export const categoryPage = async (req, res) =>{
+  try{
+    var page = req.query.page;
+    var limit = req.query.limit;
+    var s = req.query.question;
+    if(page && limit){
+      page = parseInt(page)
+      limit = parseInt(limit)
+      if(page < 1){
+        page = 1;
+      }
+      var soluongboqua = (page-1)*limit
+      const books = await Book.find({ category: { $regex: new RegExp(s, "i") } }).skip(soluongboqua).limit(limit);
+      res.status(200).json(books);
+    }
+  }catch(err){
+    res.status(500).json({error: err})
+  }
+}
+
+export const categoryLastPage = async(req, res) => {
+    try{
+      var limit = req.query.limit;
+      var s = req.query.question;
+      if(limit){
+        limit = parseInt(limit);
+        const count = await Book.countDocuments();
+        const page = Math.floor(count / limit) + 1;
+        const books = await Book.find({ category: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
+        res.status(200).json({
+          books: books,
+          page: page
+        })
+      }
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+}
