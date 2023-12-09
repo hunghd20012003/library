@@ -27,7 +27,7 @@
                         <div class="dropdown-menu"><a class="dropdown-item" href="add-user.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-user.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-book-reader" style="font-size: 13px;"></i>&nbsp;Books Loan</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="add-loan.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-dollar-sign" style="font-size: 13px;"></i>&nbsp;Subscriptions</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="plans.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Plans</a><a class="dropdown-item" href="purchase-history.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Purchase History</a></div>
@@ -61,7 +61,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fs-5 fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="me-3">
@@ -89,7 +89,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fs-5 fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="dropdown-list-image me-3"><img class="rounded-circle" src="../assets/img/avatars/avatar4.jpeg">
@@ -160,56 +160,47 @@
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table table-striped my-0" id="dataTable">
+                                <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Bill ID</th>
-                                            <th>Student ID</th>
+                                            <th>Book name</th>
                                             <th>Student name</th>
                                             <th>Loan Date</th>
                                             <th>Return date</th>
                                             <th>Status</th>
-                                            <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>283u21</td>
-                                            <td>3 books</td>
+                                            <td>Nhập môn Machine Learning</td>
                                             <td>Trương Công Đạt</td>
                                             <td>2008/11/28</td>
                                             <td>2008/11/28</td>
-                                            <td>Waiting</td>
-                                            <td><a class="btn btn-primary btn-sm border rounded-pill" role="button" href="loan-detail.html">View</a></td>
+                                            <td><button class="btn btn-primary btn-sm border rounded-pill" type="button">Edit</button><button class="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>987213</td>
-                                            <td>1</td>
+                                            <td>Nhập môn AI</td>
                                             <td>Hoàng Đình Hùng</td>
                                             <td>2008/11/28</td>
                                             <td>2009/10/09<br></td>
-                                            <td>Borrowed</td>
-                                            <td><a class="btn btn-primary btn-sm border rounded-pill" role="button" href="loan-detail.html">View</a></td>
+                                            <td><button class="btn btn-primary btn-sm border rounded-pill" type="button">Edit</button><button class="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>971311</td>
-                                            <td>2 books</td>
+                                            <td>Nhập môn Công nghệ phần mềm</td>
                                             <td>Nguyễn Hoàng Phúc</td>
                                             <td>2008/11/28</td>
                                             <td>2009/01/12<br></td>
-                                            <td>Overdue</td>
-                                            <td><a class="btn btn-primary btn-sm border rounded-pill" role="button" href="loan-detail.html">View</a></td>
+                                            <td><button class="btn btn-primary btn-sm border rounded-pill" type="button">Edit</button><button class="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td><strong>#</strong></td>
-                                            <td><strong>Bill ID</strong></td>
-                                            <td><strong>Student ID</strong></td>
+                                            <td><strong>Book name</strong></td>
                                             <td><strong>Student name</strong></td>
                                             <td><strong>Load Date</strong></td>
                                             <td><strong>Return date</strong></td>

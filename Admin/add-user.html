@@ -27,7 +27,7 @@
                         <div class="dropdown-menu"><a class="dropdown-item" href="add-user.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-user.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-book-reader" style="font-size: 13px;"></i>&nbsp;Books Loan</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="add-loan.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-dollar-sign" style="font-size: 13px;"></i>&nbsp;Subscriptions</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="plans.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Plans</a><a class="dropdown-item" href="purchase-history.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Purchase History</a></div>
@@ -61,7 +61,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fs-5 fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="me-3">
@@ -89,7 +89,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fs-5 fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="dropdown-list-image me-3"><img class="rounded-circle" src="../assets/img/avatars/avatar4.jpeg">
@@ -223,90 +223,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Accept users</p>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6 text-nowrap">
-                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
-                                        <option value="10" selected="">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>&nbsp;</label></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
-                        </div>
-                    </div>
-                    <div class="table-responsive text-nowrap table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                        <table class="table my-0" id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>User ID</th>
-                                    <th>Username</th>
-                                    <th>Category</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Reminder</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20215346</td>
-                                    <td>Trương Công Đạt</td>
-                                    <td>Member</td>
-                                    <td>Dat.tc215346@sis.hust.eduvn</td>
-                                    <td>0941118736</td>
-                                    <td class="text-center">3 months</td>
-                                    <td class="text-center"><a class="btn btn-success btn-sm border rounded-pill" role="button" href="add-user.html">Accept</a><button class="btn btn-danger btn-sm border rounded-pill" type="button">Decline</button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>20215452</td>
-                                    <td>Nguyễn Hoàng Phúc</td>
-                                    <td>Member</td>
-                                    <td>Phuc.NH215452@sis.hust.edu.vn</td>
-                                    <td>0912214811</td>
-                                    <td class="text-center">2 months</td>
-                                    <td class="text-center"><a class="btn btn-success btn-sm border rounded-pill" role="button" href="add-user.html">Accept</a><button class="btn btn-danger btn-sm border rounded-pill" type="button">Decline</button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>20215451</td>
-                                    <td>Hoàng Công Phú</td>
-                                    <td>Member</td>
-                                    <td>Phu.HC215451@sis.hust.edu.vn</td>
-                                    <td>0971234213</td>
-                                    <td class="text-center">4 months</td>
-                                    <td class="text-center"><a class="btn btn-success btn-sm border rounded-pill" role="button" href="add-user.html">Aceept</a><button class="btn btn-danger btn-sm border rounded-pill" type="button">Decline</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 align-self-center">
-                            <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                        </div>
-                        <div class="col-md-6">
-                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                 </div>
