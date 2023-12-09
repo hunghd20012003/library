@@ -5,11 +5,11 @@ import Revenue from "./Hung/Revenue";
 import Table from "./Hung/Table"
 import Footer from "./Hung/Footer";
 import SearchBoard from './Hung/SearchBoard'
-function HomePage(){
+function HomePage(props){
     return (
         <div  id="page-top">
             <div id="wrapper">
-            <Navigator></Navigator>
+            <Navigator state={props.state}></Navigator>
         <div className="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <SearchBoard></SearchBoard>

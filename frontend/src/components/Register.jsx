@@ -49,7 +49,7 @@ function Register(pros){
                     navigate("/homepage");
                 }
                 else{
-                    alert("Bạn đã có tài khoản, chuyển tới trang đăng nhập")
+                    alert("Bạn đã có tài khoản, chuyển tới trang đăng nhập");
                 }
                 console.log(res);
             } catch (error) {
@@ -89,7 +89,7 @@ function Register(pros){
                                 <hr/>
                                 
                             </form>
-                            <div className="text-center"><a className="small" href="forgot-password.html">Forgot Password?</a></div>
+                            <div className="text-center"><a className="small" href="/forgot-password">Forgot Password?</a></div>
                             <div className="text-center"><a className="small" href="/login">Already have an account? Login!</a></div>
                         </div>
                     </div>

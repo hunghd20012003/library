@@ -5,6 +5,7 @@ const userSchema=new mongoose.Schema({
     password:String, 
     googleId: String,
     facebookId:String,
+    resetToken:String,
     penaltyNumber:Number,
     isChecked:Boolean,
     isMember:Boolean
@@ -30,22 +31,25 @@ export const Book=mongoose.model("Book",{
 export const Bill=mongoose.model("Bill",{
     billID:String,
     userId:String,
-    borrowDate: Date,
-    returnDate:Date,
-    expireDate:Date,
+    borrowDate: String,
+    returnDate:String,
+    expireDate:String,
     state:String,
-    borrowedBook:[String]
+    borrowedBook:[{
+        bookId:String
+    }]
 });
 export const Plan=mongoose.model("Plan",{
-    title:String,
-    amount:Number,
+    planId: mongoose.Schema.Types.ObjectId,  // Trường làm khóa chính
+    title: String,
+    amount: Number,
     duration: Number,
-    status:Boolean,
+    status: String,
 });
 export const PurchaseHistory=mongoose.model("PurchaseHistory",{
-    userId:String,
-    planName:String,
-    startDate:Date,
-    endDate:Date,
-    status:String
+    userId: String,
+    planName: String,
+    startDate: Date,
+    endDate: Date,
+    status: String,
 });

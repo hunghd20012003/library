@@ -10,8 +10,12 @@ import auth from "./routers/auth.js"
  import { User } from "./models/schema.js"
  import { Strategy as GoogleStrategy } from "passport-google-oauth20";
  import  FacebookStrategy from 'passport-facebook'
- import book from './routers/book.js'
+ import books from './routers/books.js'
  import user from './routers/user.js'
+ import loans from './routers/loans.js'
+ import purchasehistoryrouter from "./routers/purchaseHistorys.js";
+import planRouter from "./routers/plans.js";
+import { Bill } from "./models/schema.js"
  dotenv.config();
 const app = express();
 const port = 5000;
@@ -110,11 +114,41 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{console.log("thành công")}).catch(()=>{console.log("Thất bại")});
+mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{
+
+	console.log("thành công")}).catch(()=>{console.log("Thất bại")});
+const newBill = new Bill({
+        billID: 'A1008',
+        userId: '20215452',
+        borrowDate: '2023-12-01',
+        returnDate: 'None',
+        expireDate: '2023-12-03',
+        state: 'Borrowed',
+        borrowedBook: [
+            {
+                bookId: 'DRM1'
+            },
+            {
+                bookId: 'DRM2'
+            },
+        ]
+    });
+    
+    newBill.save().then(savedBill => {
+        console.log('Bill saved:', savedBill);
+    })
+    .catch(error => {
+        console.error('Error saving bill:', error);
+    });
+
+
 app.use("/logins",logins);
 app.use("/auth",auth);
-app.use("/book",book);
+app.use("/books",books);
 app.use("/user",user);
+app.use('/loans',loans);
+app.use('/api', purchasehistoryrouter);
+app.use('/api', planRouter);
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });

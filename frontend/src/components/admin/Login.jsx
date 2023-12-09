@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import avatar from "../img/koduck.png"
+import avatar from "../../img/koduck.png"
 const URL="http://localhost:5000/";
 function Login(pros){
         const loginWithGoogle = () => {
@@ -79,7 +79,7 @@ function Login(pros){
                                         <hr/>
                                         
                                     </form>
-                                    <div className="text-center"><a className="small" href="forgot-password.html">Forgot Password?</a></div>
+                                    <div className="text-center"><a className="small" href="/forgot-password">Forgot Password?</a></div>
                                     <div className="text-center"><a className="small" href="/register">Create an Account!</a></div>
                                 </div>
                             </div>

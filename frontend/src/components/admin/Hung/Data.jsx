@@ -6,7 +6,7 @@ function Data(){
     useEffect(()=>{
       const getTotalBook=async()=>{
         try{
-            const res =await axios.get(`${URL}book/totalbook`);
+            const res =await axios.get(`${URL}books/totalbook`);
             setTotalBook(res.data.message);
         }catch(error){
             console.log(error.message);
