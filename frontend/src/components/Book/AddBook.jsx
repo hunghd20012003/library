@@ -266,7 +266,7 @@ function AddBook(){
                                                         <div className="mb-3"><label className="form-label" for="first_name"><strong>Category</strong></label>
                                                         <select className="form-select" value={book.category} name="category" onChange={handleChange}>
                                                                 <optgroup label="This is a group">
-                                                                    <option value="Novel" selected="">Novel</option>
+                                                                    <option value="Novel">Novel</option>
                                                                     <option value="Comics">Comics</option>
                                                                     <option value="Reference">Reference</option>
                                                                 </optgroup>

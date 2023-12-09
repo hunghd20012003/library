@@ -13,8 +13,8 @@ export const getLoan = async (req, res) => {
         const {billID} = req.query;
         const bill = await Bill.findOne({ billID });
         const books = [];
-        for (let i = 0; i < bill.borrowedBooks.length; i++){
-            const book = await Book.findOne({bookId: bill.borrowedBooks[i].bookId})
+        for (let i = 0; i < bill.borrowedBook.length; i++){
+            const book = await Book.findOne({bookId: bill.borrowedBook[i].bookId})
             books.push(book);
         }
         const result = {

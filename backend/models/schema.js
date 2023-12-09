@@ -35,7 +35,7 @@ export const Bill=mongoose.model("Bill",{
     returnDate: String,
     expireDate: String,
     state:String,
-    borrowedBooks:[{
+    borrowedBook:[{
         bookId: String
     }]
 });

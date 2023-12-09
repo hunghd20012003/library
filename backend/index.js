@@ -16,15 +16,15 @@ app.use(bodyParser.urlencoded({ extended: true , limit: '30mb' }));
 
 mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{
     // const newBill = new Bill({
-    //     billID: 'A1007',
+    //     billID: 'A1001',
     //     userId: '20215452',
     //     borrowDate: '2023-12-01',
     //     returnDate: 'None',
     //     expireDate: '2023-12-03',
     //     state: 'Borrowed',
-    //     borrowedBooks: [
+    //     borrowedBook: [
     //         {
-    //             bookId: 'CNDTT6'
+    //             bookId: 'DRM1'
     //         },
     //         {
     //             bookId: 'DRM2'
