@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Profile - Brand</title>
+    <title>Table - Brand</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/fonts/ionicons.min.css">
 </head>
 
 <body id="page-top">
@@ -19,7 +20,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-book-open" style="font-size: 13px;"></i>&nbsp;Book Management</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="add-book.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-book.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
@@ -27,12 +28,12 @@
                         <div class="dropdown-menu"><a class="dropdown-item" href="add-user.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-user.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-book-reader" style="font-size: 13px;"></i>&nbsp;Books Loan</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="add-loan.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Add new</a><a class="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="manage-loan.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Manage all</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-dollar-sign" style="font-size: 13px;"></i>&nbsp;Subscriptions</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="plans.html" style="padding-left: 30px;"><i class="fas fa-plus"></i>&nbsp;Plans</a><a class="dropdown-item" href="purchase-history.html" style="padding-left: 30px;"><i class="fas fa-bars"></i>&nbsp;Purchase History</a></div>
                     </li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="add-notification.html"><i class="icon ion-android-notifications"></i>&nbsp;Notification<span></span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="../register.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box-arrow-right">
@@ -46,9 +47,9 @@
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
-                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                    <div class="container-fluid">
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            <div class="input-group"></div>
                         </form>
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
@@ -61,7 +62,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fs-5 fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="me-3">
@@ -89,7 +90,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fs-5 fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="dropdown-list-image me-3"><img class="rounded-circle" src="../assets/img/avatars/avatar4.jpeg">
@@ -140,52 +141,101 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4"><strong>ADD LOAN</strong></h3>
+                    <h3 class="text-dark mb-4">Loan Detail</h3>
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Fill the form</p>
+                            <p class="text-primary m-0 fw-bold">Loan Detail</p>
                         </div>
                         <div class="card-body">
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="username"><strong>Select Book</strong></label><select class="form-select">
-                                                <optgroup label="This is a group">
-                                                    <option value="12" selected="">This is item 1</option>
-                                                    <option value="13">This is item 2</option>
-                                                    <option value="14">This is item 3</option>
-                                                </optgroup>
-                                            </select></div>
+                                        <div class="mb-3"><label class="form-label" for="username"><strong>Loan ID</strong></label><input class="form-control" type="text"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="username"><strong>Select Student</strong></label><select class="form-select">
-                                                <optgroup label="This is a group">
-                                                    <option value="12" selected="">This is item 1</option>
-                                                    <option value="13">This is item 2</option>
-                                                    <option value="14">This is item 3</option>
-                                                </optgroup>
+                                        <div class="mb-3"><label class="form-label" for="username"><strong>Student ID</strong></label><input class="form-control" type="text" id="bookID" name="bookID"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Student Name</strong></label><input class="form-control" type="text" id="author" name="author"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Status</strong></label><select class="form-select">
+                                                <option value="14">Returned</option>
+                                                <option value="">Borrowed</option>
+                                                <option value="">Overdue</option>
+                                                <option value="">Waiting</option>
                                             </select></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Loan Date</strong></label><input class="form-control" type="date"></div>
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong><span style="color: rgb(0, 0, 0);">Loan Date</span></strong></label><input class="form-control" type="date"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Return/Due Date</strong></label><input class="form-control" type="date"></div>
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong><span style="color: rgb(0, 0, 0);">Due date</span></strong></label><input class="form-control" type="date"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong><span style="color: rgb(0, 0, 0);">Return Date</span></strong></label><input class="form-control" type="date"></div>
                                     </div>
                                 </div>
-                                <div class="mb-3"><button class="btn btn-success btn-sm" type="submit" style="margin-top: 15px;">Save</button><button class="btn btn-secondary btn-sm" type="submit" style="margin-top: 15px;margin-left: 5px;">Cancel</button></div>
+                                <div class="mb-3"><button class="btn btn-success btn-sm" type="submit" style="margin-top: 17px;">Update</button><button class="btn btn-secondary btn-sm" type="submit" style="margin-top: 17px;margin-left: 5px;">Back</button></div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Book loan</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive text-nowrap table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Book ID</th>
+                                            <th>Book name</th>
+                                            <th>Publisher</th>
+                                            <th>Author</th>
+                                            <th>Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123123</td>
+                                            <td>Machine Learning</td>
+                                            <td>33</td>
+                                            <td>2008/11/28</td>
+                                            <td>$162,700</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123411</td>
+                                            <td>Machine Learning</td>
+                                            <td>33</td>
+                                            <td>2008/11/28</td>
+                                            <td>$162,700</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>#</strong></td>
+                                            <td><strong>Book ID</strong></td>
+                                            <td><strong>Book name</strong></td>
+                                            <td><strong>Publisher</strong></td>
+                                            <td><strong>Author</strong></td>
+                                            <td><strong>Category</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
-                </div>
-            </footer>
+            <footer class="bg-white sticky-footer"></footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
