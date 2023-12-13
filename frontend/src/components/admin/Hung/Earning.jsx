@@ -1,4 +1,5 @@
 import LineChart from "./LineChart";
+import { Link } from 'react-router-dom';
 function Earning(){
     return (
         <div className="col-lg-7 col-xl-8">

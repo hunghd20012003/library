@@ -11,8 +11,9 @@ import auth from "./routers/auth.js"
  import { Strategy as GoogleStrategy } from "passport-google-oauth20";
  import  FacebookStrategy from 'passport-facebook'
  import books from './routers/books.js'
- import user from './routers/user.js'
  import loans from './routers/loans.js'
+ import addUsers from './routers/addUsers.js'
+ import manageUsers from './routers/manageUsers.js'
  import purchasehistoryrouter from "./routers/purchaseHistorys.js";
 import planRouter from "./routers/plans.js";
 import { Bill } from "./models/schema.js"
@@ -145,10 +146,11 @@ const newBill = new Bill({
 app.use("/logins",logins);
 app.use("/auth",auth);
 app.use("/books",books);
-app.use("/user",user);
 app.use('/loans',loans);
 app.use('/api', purchasehistoryrouter);
 app.use('/api', planRouter);
+app.use("/addusers",addUsers);
+app.use("/manageusers", manageUsers)
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });

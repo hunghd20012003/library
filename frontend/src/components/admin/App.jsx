@@ -14,6 +14,8 @@ import {BrowserRouter, Route,Navigate , Routes} from 'react-router-dom'
 import ManageBook from "./Book/ManageBook";
 import PurchaseHistory from "./Plan/PurchaseHistory";
 import Plan from "./Plan/Plan";
+import AddUser from "./ManageUser/AddUser";
+import ManageUser from "./ManageUser/ManageUser";
 function App() {
 	const [user, setUser] = useState("");
     function changeUser(userId){
@@ -24,17 +26,19 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Login user={user} state={changeUser} />} />
-        <Route path='/login' element={<Login user={user} state={changeUser}></Login>}> </Route>
+        <Route path='/admin/login' element={<Login user={user} state={changeUser}></Login>}> </Route>
         <Route path='/register' element={<Register user={user}  state={changeUser}></Register>}></Route>
-        <Route path='/homepage' element={(user!=="")?<HomePage user={user} state={changeUser}></HomePage>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/addbook' element={(user!=="")?<AddBook user={user} state={changeUser}></AddBook>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/managebook/:bookId' element={(user!=="")?<EditBook user={user} state={changeUser}></EditBook>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path="/managebook" element={(user!=="")?<ManageBook user={user} state={changeUser}></ManageBook>:<Navigate to ='/login'></Navigate>}></Route>
-        <Route path='/manageloan/:billID' element={(user!=="")?<LoanDetail user={user} state={changeUser}></LoanDetail>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/manageloan' element={(user!=="")?<ManageLoan user={user} state={changeUser}></ManageLoan>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/purchasehistory' element={(user!=="")?<PurchaseHistory user={user} state={changeUser}></PurchaseHistory>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/plans' element={(user!=="")?<Plan user={user} state={changeUser}></Plan>:<Navigate to='/login'></Navigate>}></Route>
-
+        <Route path='/admin/homepage' element={(user!=="")?<HomePage user={user} state={changeUser}></HomePage>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/addbook' element={(user!=="")?<AddBook user={user} state={changeUser}></AddBook>:<Navigate to='/login'></Navigate>}></Route>
+        <Route path='/admin/managebook/:bookId' element={(user!=="")?<EditBook user={user} state={changeUser}></EditBook>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path="/admin/managebook" element={(user!=="")?<ManageBook user={user} state={changeUser}></ManageBook>:<Navigate to ='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/manageloan/:billID' element={(user!=="")?<LoanDetail user={user} state={changeUser}></LoanDetail>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/manageloan' element={(user!=="")?<ManageLoan user={user} state={changeUser}></ManageLoan>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/purchasehistory' element={(user!=="")?<PurchaseHistory user={user} state={changeUser}></PurchaseHistory>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/plans' element={(user!=="")?<Plan user={user} state={changeUser}></Plan>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/adduser' element={(user!=="")?<AddUser user={user} state={changeUser}></AddUser>:<Navigate to='/admin/login'></Navigate>}></Route>
+        <Route path='/admin/manageuser' element={(user!=="")?<ManageUser user={user} state={changeUser}></ManageUser>:<Navigate to='/admin/login'></Navigate>}></Route>
+ 
         <Route path="/forgot-password" element={<ForgotPassword></ForgotPassword>}></Route>
       </Routes>
     </BrowserRouter>

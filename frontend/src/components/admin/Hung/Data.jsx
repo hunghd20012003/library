@@ -18,7 +18,7 @@ function Data(){
     useEffect(()=>{
       const getTotalUser=async()=>{
         try{
-            const res =await axios.get(`${URL}user/totaluser`);
+            const res =await axios.get(`${URL}manageusers/totaluser`);
             setTotalUser(res.data.message);
             console.log(res.data);
         }catch(error){
