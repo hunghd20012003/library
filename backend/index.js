@@ -118,30 +118,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{
 
 	console.log("thành công")}).catch(()=>{console.log("Thất bại")});
-const newBill = new Bill({
-        billID: 'A1008',
-        userId: '20215452',
-        borrowDate: '2023-12-01',
-        returnDate: 'None',
-        expireDate: '2023-12-03',
-        state: 'Borrowed',
-        borrowedBook: [
-            {
-                bookId: 'DRM1'
-            },
-            {
-                bookId: 'DRM2'
-            },
-        ]
-    });
-    
-    newBill.save().then(savedBill => {
-        console.log('Bill saved:', savedBill);
-    })
-    .catch(error => {
-        console.error('Error saving bill:', error);
-    });
-
 
 app.use("/logins",logins);
 app.use("/auth",auth);

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 const userSchema=new mongoose.Schema({ 
     name:String,
+    phone:String,
     email:String,
     password:String, 
     googleId: String,
@@ -8,16 +9,15 @@ const userSchema=new mongoose.Schema({
     resetToken:String,
     penaltyNumber:Number,
     isChecked:Boolean,
-    isMember:Boolean
+    isMember:Boolean,
+    resetToken:String,
 });
 export const User=mongoose.model("User",userSchema);
 export const Admin=mongoose.model("Admin",{
     name:String,
     email:String,
     phone: String,
-    isChecked:Boolean,
-    googleID: String,
-    facebookID:String,
+    password:String
 });
 export const Book=mongoose.model("Book",{
     bookId:String,

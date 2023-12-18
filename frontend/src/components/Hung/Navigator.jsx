@@ -3,7 +3,7 @@ function Navigator(){
     return (
         <nav className="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
    <div className="container-fluid d-flex flex-column p-0">
-    <Link className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" to="/admin/homepage">
+    <Link className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" to="/homepage">
     <div className="sidebar-brand-icon rotate-n-15">
          <i className="fas fa-laugh-wink"></i>
        </div>
@@ -20,42 +20,42 @@ function Navigator(){
         </Link>
        </li>
        <li className="nav-item dropdown">
-         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/admin/login">
+         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/login">
            <i className="fas fa-book-open" style={{fontSize:"13px"}}></i>&nbsp;Book Management </a>
          <div className="dropdown-menu">
-           <Link className="dropdown-item" to="/admin/addbook" style={{paddingLeft:"30px"}}>
+           <Link className="dropdown-item" to="/addbook" style={{paddingLeft:"30px"}}>
              <i className="fas fa-plus"></i>&nbsp;Add new </Link>
-           <Link className="dropdown-item" to="/admin/managebook" style={{paddingLeft:"30px"}}>
+           <Link className="dropdown-item" to="/managebook" style={{paddingLeft:"30px"}}>
              <i className="fas fa-bars"></i>&nbsp;Manage all </Link>
          </div>
        </li>
        <li className="nav-item dropdown">
-         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/admin/login">
+         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/login">
            <i className="fas fa-users" style={{fontSize:"13px"}}></i>&nbsp;Manage User </a>
          <div className="dropdown-menu">
-           <Link className="dropdown-item" to="/admin/adduser" style={{paddingLeft:"30px"}}>
+           <Link className="dropdown-item" to="/adduser" style={{paddingLeft:"30px"}}>
              <i className="fas fa-plus"></i>&nbsp;Add new </Link>
-           <Link className="dropdown-item" to="/admin/manageuser" style={{paddingLeft:"30px"}}>
+           <Link className="dropdown-item" to="/manageuser" style={{paddingLeft:"30px"}}>
              <i className="fas fa-bars"></i>&nbsp;Manage all </Link>
          </div>
        </li>
        <li className="nav-item dropdown">
-         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/admin/login">
+         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/login">
            <i className="fas fa-book-reader" style={{fontSize:"13px"}}></i>&nbsp;Books Loan </a>
          <div className="dropdown-menu">
            <Link className="dropdown-item" to="/addloan" style={{paddingLeft:"30px"}}>
              <i className="fas fa-plus"></i>&nbsp;Add new </Link>
-             <Link className="dropdown-item" style={{paddingLeft:"30px"}} to="/admin/manageloan">
+             <Link className="dropdown-item" style={{paddingLeft:"30px"}} to="/manageloan">
              <i className="fas fa-bars"></i>&nbsp;Manage all </Link>
          </div>
        </li>
        <li className="nav-item dropdown">
-         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/admin/login">
+         <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/login">
            <i className="fas fa-dollar-sign" style={{fontSize:"13px"}}></i>&nbsp;Subscriptions </a>
          <div className="dropdown-menu">
-           <Link className="dropdown-item" to="/admin/plans" style={{paddingLeft:"30px"}}>
+           <Link className="dropdown-item" to="/plans" style={{paddingLeft:"30px"}}>
              <i className="fas fa-plus"></i>&nbsp;Plans </Link>
-           <Link className="dropdown-item" to="/admin/purchasehistory" style={{paddingLeft:"30px"}}>
+           <Link className="dropdown-item" to="/purchasehistory" style={{paddingLeft:"30px"}}>
              <i className="fas fa-bars"></i>&nbsp;Purchase History </Link>
          </div>
        </li>

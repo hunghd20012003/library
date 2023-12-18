@@ -24,18 +24,22 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get(
 	"/google/library",
 	passport.authenticate("google", {
-		successRedirect: "http://localhost:3000/homepage",
 		failureRedirect: "/login/failed",
-	})
+	}),function(req, res) {
+		// Successful authentication, redirect home.
+		console.log(req.user._id);
+		res.redirect("http://localhost:4000/"+req.user._id);
+	  }
 );
 router.get('/facebook',passport.authenticate('facebook'));
 router.get('/facebook/library',
   passport.authenticate('facebook', { 
-	successRedirect:"http://localhost:3000/homepage",
-	failureRedirect: '/login/failed' }),
+	failureRedirect: '/login/failed' }),function(req,res){
+		res.redirect("http://localhost:4000/"+req.user._id);
+	}
 );
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect("http://localhost:3000");
+	res.redirect("http://localhost:4000");
 });
 export default router;

@@ -1,4 +1,4 @@
-import image from '../../../img/koduck.png'
+import image from '../../img/koduck.png'
 function Persion(){
     return (
         <li className="nav-item dropdown no-arrow">
