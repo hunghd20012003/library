@@ -16,6 +16,7 @@ import auth from "./routers/auth.js"
  import manageUsers from './routers/manageUsers.js'
  import purchasehistoryrouter from "./routers/purchaseHistorys.js";
 import planRouter from "./routers/plans.js";
+import userInfors from './routers/userInfors.js'
 import { Bill } from "./models/schema.js"
  dotenv.config();
 const app = express();
@@ -30,6 +31,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 passport.use(
 	new GoogleStrategy(
 		{
@@ -111,7 +113,13 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
 	done(null, user);
 });
-app.use(cors());
+app.use(
+	cors({
+		origin: "http://localhost:4000",
+		methods: "GET,POST,PUT,DELETE",
+		credentials: true,
+	})
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -127,6 +135,7 @@ app.use('/api', purchasehistoryrouter);
 app.use('/api', planRouter);
 app.use("/addusers",addUsers);
 app.use("/manageusers", manageUsers)
+app.use("/userInfors",userInfors);
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });

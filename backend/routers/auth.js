@@ -6,7 +6,7 @@ router.get("/login/success", (req, res) => {
 		res.status(200).json({
 			error: false,
 			message: "Successfully Loged In",
-			user: req.user,
+			user: req.user._id,
 		});
 	} else {
 		res.status(403).json({ error: true, message: "Not Authorized" });
@@ -24,19 +24,16 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get(
 	"/google/library",
 	passport.authenticate("google", {
+		successRedirect: "http://localhost:4000",
 		failureRedirect: "/login/failed",
-	}),function(req, res) {
-		// Successful authentication, redirect home.
-		console.log(req.user._id);
-		res.redirect("http://localhost:4000/"+req.user._id);
-	  }
+	})
 );
-router.get('/facebook',passport.authenticate('facebook'));
+router.get('/facebook',passport.authenticate("facebook"));
 router.get('/facebook/library',
   passport.authenticate('facebook', { 
-	failureRedirect: '/login/failed' }),function(req,res){
-		res.redirect("http://localhost:4000/"+req.user._id);
-	}
+	successRedirect: "http://localhost:4000",
+		failureRedirect: "/login/failed",
+	})
 );
 router.get("/logout", (req, res) => {
 	req.logout();

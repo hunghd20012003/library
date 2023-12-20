@@ -2,8 +2,9 @@ import avatar from "../img/koduck.png"
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { navigate } from "react-router-dom";
-import Navigator from "./Navigator";
+import Navigator from "./common/Navigator";
 function HomePage(){
+  
     return (
 <div>
   <Navigator></Navigator>

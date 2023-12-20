@@ -1,10 +1,10 @@
 
 import avatar from '../img/koduck.png'
 import axios from 'axios';
-import {React, useState} from 'react';
+import {React, useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 const URL="http://localhost:5000/";
-function Register(){
+function Register(pros){
     // const registerWithGoogle = () => {
 	// 	window.open(
 	// 		`${URL}auth/google/library`,
@@ -45,7 +45,7 @@ function Register(){
                 }});
                 console.log(res);
                 if(res.data.state==="oke"){
-                    navigate("/homepage");
+                    pros.state(res.data.userId);
                 }
                 else{
                     alert("Bạn đã có tài khoản, chuyển tới trang đăng nhập");
@@ -56,6 +56,12 @@ function Register(){
             }
         }
     }
+    useEffect(()=>{
+        if(pros.user!==null){
+          console.log(pros.user);
+          navigate("/homepage")
+        }
+      },[pros.user]);
    return (
   <div className='page registration-page'>
      <section className="clean-block clean-form dark">
