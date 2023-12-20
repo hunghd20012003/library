@@ -80,12 +80,8 @@ export const getLastPage = async(req, res) => {
         if(limit){
           limit = parseInt(limit);
           const count = await Book.countDocuments();
-          const page = Math.floor(count / limit) + 1;
-          const books = await Book.find().skip((page-1) * limit).limit(limit);
-          res.status(200).json({
-            books: books,
-            page: page
-          })
+          const page = Math.ceil(count / limit);
+          res.status(200).json(page)
         }
       }catch(err){
         res.status(500).json({error: err})
@@ -117,13 +113,9 @@ export const nameLastPage = async(req, res) => {
       var s = req.query.question;
       if(limit){
         limit = parseInt(limit);
-        const count = await Book.countDocuments();
-        const page = Math.floor(count / limit) + 1;
-        const books = await Book.find({ name: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
-        res.status(200).json({
-          books: books,
-          page: page
-        })
+        const count = await Book.countDocuments({ name: { $regex: new RegExp(s, "i") } });
+        const page = Math.ceil(count / limit);
+        res.status(200).json(page)
       }
     }catch(err){
       res.status(500).json({error: err})
@@ -155,13 +147,9 @@ export const bookIdLastPage = async(req, res) => {
       var s = req.query.question;
       if(limit){
         limit = parseInt(limit);
-        const count = await Book.countDocuments();
-        const page = Math.floor(count / limit) + 1;
-        const books = await Book.find({ bookId: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
-        res.status(200).json({
-          books: books,
-          page: page
-        })
+        const count = await Book.countDocuments({ bookId: { $regex: new RegExp(s, "i") } });
+        const page = Math.ceil(count / limit);
+        res.status(200).json(page)
       }
     }catch(err){
       res.status(500).json({error: err})
@@ -193,13 +181,9 @@ export const authorLastPage = async(req, res) => {
       var s = req.query.question;
       if(limit){
         limit = parseInt(limit);
-        const count = await Book.countDocuments();
-        const page = Math.floor(count / limit) + 1;
-        const books = await Book.find({ author: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
-        res.status(200).json({
-          books: books,
-          page: page
-        })
+        const count = await Book.countDocuments({ author: { $regex: new RegExp(s, "i") } });
+        const page = Math.ceil(count / limit);
+        res.status(200).json(page)
       }
     }catch(err){
       res.status(500).json({error: err})
@@ -231,13 +215,9 @@ export const publishorLastPage = async(req, res) => {
       var s = req.query.question;
       if(limit){
         limit = parseInt(limit);
-        const count = await Book.countDocuments();
-        const page = Math.floor(count / limit) + 1;
-        const books = await Book.find({ publishor: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
-        res.status(200).json({
-          books: books,
-          page: page
-        })
+        const count = await Book.countDocuments({ publishor: { $regex: new RegExp(s, "i") } });
+        const page = Math.ceil(count / limit);
+        res.status(200).json(page)
       }
     }catch(err){
       res.status(500).json({error: err})
@@ -269,15 +249,116 @@ export const categoryLastPage = async(req, res) => {
       var s = req.query.question;
       if(limit){
         limit = parseInt(limit);
-        const count = await Book.countDocuments();
-        const page = Math.floor(count / limit) + 1;
-        const books = await Book.find({ category: { $regex: new RegExp(s, "i") } }).skip((page-1) * limit).limit(limit);
-        res.status(200).json({
-          books: books,
-          page: page
-        })
+        const count = await Book.countDocuments({ category: { $regex: new RegExp(s, "i") } });
+        const page = Math.ceil(count / limit);
+        res.status(200).json(page)
       }
     }catch(err){
       res.status(500).json({error: err})
     }
+}
+
+export const userSearch = async (req, res) => {
+  try {
+    var page = req.query.page;
+    var limit = req.query.limit;
+    console.log(req.query);
+    if (page && limit) {
+      page = parseInt(page);
+      limit = parseInt(limit);
+      if (page < 1) {
+        page = 1;
+      }
+      var soluongboqua = (page - 1) * limit;
+
+      var and = [];
+
+      if (req.query.cau.question.author !== "") {
+        and.push({ author: { $regex: req.query.cau.question.author, $options: 'i' } });
+      }
+      if (req.query.cau.question.name !== "") {
+        and.push({ name: { $regex: req.query.cau.question.name, $options: 'i' } });
+      }
+      if (req.query.cau.question.publishor !== "") {
+        and.push({ publishor: { $regex: req.query.cau.question.publishor, $options: 'i' } });
+      }
+      if (req.query.cau.categories.length > 1) {
+        and.push({ category: { $in: req.query.cau.categories } });
+      }
+
+      console.log(and);
+      if (and.length === 0) {
+        const books = await Book.find().skip(soluongboqua).limit(limit);
+        res.status(200).json(books);
+      } else {
+        const searchConditions = {
+          $and: and,
+        };
+        const books = await Book.find(searchConditions).skip(soluongboqua).limit(limit);
+        res.status(200).json(books);
+      }
+    }
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const userSearchLastPage = async (req, res) => {
+  try {
+    var limit = req.query.limit;
+    console.log(req.query);
+    if (limit) {
+      limit = parseInt(limit);
+
+      var and = [];
+
+      if (req.query.cau.question.author !== "") {
+        and.push({ author: { $regex: req.query.cau.question.author, $options: 'i' } });
+      }
+      if (req.query.cau.question.name !== "") {
+        and.push({ name: { $regex: req.query.cau.question.name, $options: 'i' } });
+      }
+      if (req.query.cau.question.publishor !== "") {
+        and.push({ publishor: { $regex: req.query.cau.question.publishor, $options: 'i' } });
+      }
+      if (req.query.cau.categories.length > 1) {
+        and.push({ category: { $in: req.query.cau.categories } });
+      }
+
+      console.log(and);
+      if (and.length === 0) {
+        const totalCount = await Book.countDocuments();
+        const lastPage = Math.ceil(totalCount / limit);
+        
+        res.status(200).json(lastPage);
+      } else {
+        const searchConditions = {
+          $and: and,
+        };
+
+        const totalCount = await Book.countDocuments(searchConditions);
+        
+        const lastPage = Math.ceil(totalCount / limit);
+        res.status(200).json(lastPage);
+      }
+    }
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getBookInTempCart = async (req, res) => {
+  try{
+    console.log(req.query.cart);
+    const cart = req.query.cart;
+    const books = [];
+    for (let i = 0; i <  cart.length; i++){
+      const book = await Book.findOne({bookId: cart[i]})
+      books.push(book);
+    }
+    res.status(200).json(books);
+  }catch(err){
+    res.status(500).json({ error: err });
+  }
+  
 }

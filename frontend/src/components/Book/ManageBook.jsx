@@ -88,37 +88,31 @@ function ManageBook(){
             try{
                 if (search === "name"){
                     const res = await axios.get("http://localhost:5000/books/nameLastPage", {params: {limit: limit, question: question}});
-                    setPage(res.data.page)
-                    setBooks(res.data.books);
+                    setPage(res.data)
                     console.log(page);
                 }
                 else if(search === "bookId"){
                     const res = await axios.get("http://localhost:5000/books/bookIdLastPage", {params: {limit: limit, question: question}});
-                    setPage(res.data.page)
-                    setBooks(res.data.books);
+                    setPage(res.data)
                     console.log(page);
                 }
                 else if(search === "author"){
                     const res = await axios.get("http://localhost:5000/books/authorLastPage", {params: {limit: limit, question: question}});
-                    setPage(res.data.page)
-                    setBooks(res.data.books);
+                    setPage(res.data)
                     console.log(page);
                 }
                 else if(search === "publishor"){
                     const res = await axios.get("http://localhost:5000/books/publishorLastPage", {params: {limit: limit, question: question}});
-                    setPage(res.data.page)
-                    setBooks(res.data.books);
+                    setPage(res.data)
                     console.log(page);
                 }
                 else if(search === "category"){
                     const res = await axios.get("http://localhost:5000/books/categoryLastPage", {params: {limit: limit, question: question}});
-                    setPage(res.data.page)
-                    setBooks(res.data.books);
+                    setPage(res.data)
                     console.log(page);
                 }else{
                     const res = await axios.get("http://localhost:5000/books/lastpage", {params: {limit: limit}});
-                    setPage(res.data.page)
-                    setBooks(res.data.books);
+                    setPage(res.data)
                     console.log(page);
                 }
             }catch(error){

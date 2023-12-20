@@ -26,7 +26,8 @@ export const Book=mongoose.model("Book",{
     category:String,
     amount:Number,
     available:Number,
-    image:String
+    image:String,
+    description:String
 });
 export const Bill=mongoose.model("Bill",{
     billID:String,

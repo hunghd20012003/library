@@ -10,10 +10,11 @@ function AddBook(){
         name: "",
         author: "",
         publishor: "",
-        category: "",
+        category: "Tiểu thuyết",
         amount: "",
         available:"",
-        image:""
+        image:"",
+        description:""
     });
     function handleBack(){
         navigate("/");
@@ -266,9 +267,9 @@ function AddBook(){
                                                         <div className="mb-3"><label className="form-label" for="first_name"><strong>Category</strong></label>
                                                         <select className="form-select" value={book.category} name="category" onChange={handleChange}>
                                                                 <optgroup label="This is a group">
-                                                                    <option value="Novel">Novel</option>
-                                                                    <option value="Comics">Comics</option>
-                                                                    <option value="Reference">Reference</option>
+                                                                    <option value="Tiểu thuyết">Tiểu thuyết</option>
+                                                                    <option value="Truyện tranh">Truyện tranh</option>
+                                                                    <option value="Sách tham khảo">Sách tham khảo</option>
                                                                 </optgroup>
                                                             </select></div>
                                                     </div>
@@ -277,6 +278,11 @@ function AddBook(){
                                                     </div>
                                                     <div className="col">
                                                         <div className="mb-3"><label className="form-label" id="available" for="last_name"><strong>Available</strong></label><input className="form-control" type="text" id="publisher-1" name="available" value={book.available} onChange={handleChange}/></div>
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <div className="mb-3"><label id="available-1" className="form-label" for="last_name"><strong>Description</strong></label></div><textarea className="form-control" rows="6" name="description" value={book.description} onChange={handleChange}></textarea>
                                                     </div>
                                                 </div>
                                                 <div className="mb-3"><button className="btn btn-success btn-sm" type="submit" style={{marginTop: 17}}>Update</button><button className="btn btn-secondary btn-sm" onClick={handleBack} style={{marginTop: 17, marginLeft: 5}}>Back</button></div>
