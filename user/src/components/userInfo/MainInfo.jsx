@@ -37,12 +37,7 @@ function MainInfo(pros){
         };
         getUser();
     },[]);
-    useEffect(()=>{
-        if(pros.user!==null){
-          console.log(pros.user);
-          navigate("/main-info")
-        }
-      },[pros.user]);
+
  return (
     <div>
         <Navigator user={pros.user}></Navigator>

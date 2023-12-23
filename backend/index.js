@@ -31,7 +31,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
 passport.use(
 	new GoogleStrategy(
 		{
@@ -113,19 +112,35 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
 	done(null, user);
 });
-const corsConfig4000 = {
-	origin: 'http://localhost:4000',
-	methods: 'GET,POST,PUT,DELETE',
-	credentials: true,
-  };
+// const corsConfig4000 = {
+// 	origin: 'http://localhost:4000',
+// 	methods: 'GET,POST,PUT,DELETE',
+// 	credentials: true,
+//   };
   
-  const corsConfig3000 = {
-	origin: 'http://localhost:3000',
-	methods: 'GET,POST,PUT,DELETE',
-	credentials: true,
-  };
+//   const corsConfig3000 = {
+// 	origin: 'http://localhost:3000',
+// 	methods: 'GET,POST,PUT,DELETE',
+// 	credentials: true,
+//   };
   
-  app.use(cors([corsConfig4000, corsConfig3000]));
+//   app.use(cors([corsConfig4000, corsConfig3000]));
+app.use((req, res, next) => {
+	const allowedOrigins = ['http://localhost:3000','http://localhost:4000'];
+	const origin = req.headers.origin;
+  
+	if (allowedOrigins.includes(origin)) {
+	  res.header('Access-Control-Allow-Origin', origin);
+	} else {
+	}
+  
+	res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	res.header('Access-Control-Allow-Credentials', true);
+
+	return next();
+  });
+  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

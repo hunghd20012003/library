@@ -24,12 +24,7 @@ function TransactionHistory(pros){
             };
             getAllPlans();
         },[]);
-        useEffect(()=>{
-            if(pros.user!==null){
-              console.log(pros.user);
-              navigate("/transaction-history");
-            }
-          },[pros.user]);
+
     return (
         <div>
             <Navigator user={pros.user}></Navigator>
