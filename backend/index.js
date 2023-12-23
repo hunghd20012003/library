@@ -59,7 +59,7 @@ passport.use(
 			 		facebookId:"",
 					penaltyNumber:0,
 					isChecked:false,
-					isMember:false });
+					isMember:true });
                 // Gọi callback để tiếp tục quá trình xác thực
                 return callback(null, newUser);
               } catch (err) {
@@ -96,7 +96,7 @@ passport.use(new FacebookStrategy({
 			 facebookId:profile.id,
 			penaltyNumber:0,
 			isChecked:false,
-			isMember:false  });
+			isMember:true  });
 		return callback(null, newUser);
 	  } catch (err) {
 		// Xử lý lỗi nếu có
@@ -113,13 +113,19 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
 	done(null, user);
 });
-app.use(
-	cors({
-		origin: "http://localhost:4000",
-		methods: "GET,POST,PUT,DELETE",
-		credentials: true,
-	})
-);
+const corsConfig4000 = {
+	origin: 'http://localhost:4000',
+	methods: 'GET,POST,PUT,DELETE',
+	credentials: true,
+  };
+  
+  const corsConfig3000 = {
+	origin: 'http://localhost:3000',
+	methods: 'GET,POST,PUT,DELETE',
+	credentials: true,
+  };
+  
+  app.use(cors([corsConfig4000, corsConfig3000]));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -136,6 +142,7 @@ app.use('/api', planRouter);
 app.use("/addusers",addUsers);
 app.use("/manageusers", manageUsers)
 app.use("/userInfors",userInfors);
+app.use('/api/has-active-plan', planRouter);
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });

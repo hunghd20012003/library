@@ -6,7 +6,13 @@ router.get("/login/success", (req, res) => {
 		res.status(200).json({
 			error: false,
 			message: "Successfully Loged In",
-			user: req.user._id,
+			user: {
+				id:req.user.id,
+				name:req.user.name,
+				penaltyNumber:req.user.penaltyNumber,
+				isChecked:req.user.isChecked,
+                isMember:req.user.isMember
+			},
 		});
 	} else {
 		res.status(403).json({ error: true, message: "Not Authorized" });

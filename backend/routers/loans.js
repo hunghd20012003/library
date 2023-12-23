@@ -1,5 +1,5 @@
 import express from 'express';
-import { getLoans, createLoan, updateLoan, getLoan, updateState } from '../controllers/loans.js';
+import { getLoans, createLoan, updateLoan, getLoan, updateState, getThisLoan } from '../controllers/loans.js';
 
 const router = express.Router();
 
@@ -12,5 +12,7 @@ router.get('/updateState', updateState)
 router.post('/', createLoan);
 
 router.post('/update', updateLoan);
+
+router.get("/getThisBill", getThisLoan)
 
 export default router;

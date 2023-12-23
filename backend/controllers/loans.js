@@ -46,7 +46,14 @@ export const updateState = async (req, res) => {
 };
 
 export const createLoan = async (req, res) => {
-    
+    try{
+        console.log(req.body);
+        const bill = new Bill(req.body);
+        bill.save();
+        res.status(200).json({tt: "OK"})  
+      }catch(error){
+        res.status(500).json({tt: "ERROR"})
+      }
 };
 
 export const updateLoan = async (req, res) => {
@@ -60,4 +67,27 @@ export const updateLoan = async (req, res) => {
         console.log("Lỗi", error);
         res.status(500).json({tt: "Lỗi"})
       }
+};
+
+export const getThisLoan = async (req, res) => {
+    try{
+        console.log(req.query);
+        const bills = await Bill.find({userId: req.query.userId});
+        var flag = true;
+        for(let i = 0; i < bills.length; i++){
+            if(bills[i].returnDate === 'None'){
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            console.log({tt: "NO", numOfBill: bills.length});
+            res.status(200).json({tt: "NO", numOfBill: bills.length})
+        }else{
+            console.log({tt: "NO", numOfBill: bills.length});
+            res.status(200).json({tt: "YES", numOfBill: bills.length})
+        }
+    }catch(error){
+
+    }
 };

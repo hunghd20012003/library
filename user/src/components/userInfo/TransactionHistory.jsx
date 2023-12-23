@@ -1,16 +1,43 @@
-import avatar from '../../img/koduck'
+import avatar from '../../img/koduck.png'
 import { Link } from 'react-router-dom'
 import Navigator from '../common/Navigator'
 import InfoDashboard from './InfoDashboard'
-function TransactionHistory(){
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import {React,useEffect,useState} from "react"
+const URL="http://localhost:5000/";
+function TransactionHistory(pros){
+     const navigate=useNavigate();
+        const [plan, changePlan]=useState([]);
+        useEffect(()=>{
+            const getAllPlans=async()=>{
+                try {
+                    const res=await axios.post(`${URL}userInfors/getAllPlans`,{
+                        params:{
+                            userId:pros.user.id
+                        }
+                    });
+                    changePlan(res.data);
+                } catch (error) {
+                    
+                }
+            };
+            getAllPlans();
+        },[]);
+        useEffect(()=>{
+            if(pros.user!==null){
+              console.log(pros.user);
+              navigate("/transaction-history");
+            }
+          },[pros.user]);
     return (
         <div>
-            <Navigator></Navigator>
+            <Navigator user={pros.user}></Navigator>
         <main className="page">
         <section className="clean-block about-us">
             <div className="container containerUsser">
                 <div className="row rowUserInfor">
-                    <InfoDashboard></InfoDashboard>
+                    <InfoDashboard state="class2" user={pros.user}></InfoDashboard>
                     <div className="col-md-6 col-xl-8">
                         <div className="divGD">
                             <div className="table-responsive">
@@ -18,18 +45,22 @@ function TransactionHistory(){
                                     <thead>
                                         <tr>
                                             <th>Ngày GD</th>
-                                            <th>Thao tác</th>
-                                            <th>Đơn giá (VNĐ)</th>
-                                            <th>Chi tiết</th>
+                                            <th>Gói dịch vụ</th>
+                                            <th>Ngày kết thúc</th>
+                                            <th>Trạng thái</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>19/12/2023</td>
-                                            <td>Mua TTV Bạc</td>
-                                            <td>100.000</td>
-                                            <td>Xem</td>
-                                        </tr>
+                                      {
+                                        plan.map((item)=>(
+                                           <tr>
+                                           <td>{item.startDate}</td>
+                                            <td>{item.planName}</td>
+                                            <td>{item.endDate}</td>
+                                            <td>{item.status}</td>
+                                           </tr>
+                                        ))
+                                      }
                                     </tbody>
                                 </table>
                             </div>

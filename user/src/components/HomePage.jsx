@@ -1,13 +1,19 @@
 import avatar from "../img/koduck.png"
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navigator from "./common/Navigator";
-function HomePage(){
-  
+function HomePage(pros){
+  const navigate=useNavigate();
+  useEffect(()=>{
+    if(pros.user!==null){
+      console.log(pros.user);
+      navigate("/homepage")
+    }
+  },[pros.user]);
     return (
 <div>
-  <Navigator></Navigator>
+  <Navigator user={pros.user}></Navigator>
   <main className="page landing-page">
   <section
   className="clean-block clean-hero"

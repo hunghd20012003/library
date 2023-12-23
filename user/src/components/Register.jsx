@@ -45,7 +45,7 @@ function Register(pros){
                 }});
                 console.log(res);
                 if(res.data.state==="oke"){
-                    pros.state(res.data.userId);
+                    pros.state(res.data.user);
                 }
                 else{
                     alert("Bạn đã có tài khoản, chuyển tới trang đăng nhập");

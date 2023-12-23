@@ -37,7 +37,13 @@ export const userlogin = async (req, res) => {
                 if(result===true){
                     res.send({
                         state:"ok",
-                        userId:user._id
+                        user:{
+                            id:user._id,
+                            name:user.name,
+                            penaltyNumber:user.penaltyNumber,
+                            isChecked:user.isChecked,
+                            isMember:user.isMember
+                        }
                     });
                 }
                 else{
@@ -94,14 +100,20 @@ export const userRegister = async (req, res) => {
                     penaltyNumber:0,
                     resetToken:"",
                     isChecked:false,
-                    isMember:false
+                    isMember:true
                 });
                 newUser.save().then((result)=>id=result._id).catch((err)=>console.log(err));
             });
             
             res.status(200).send({
                 state:"oke",
-                userId:id
+                user:{
+                    id:id,
+                    name:newUser.name,
+                    penaltyNumber:newUser.penaltyNumber,
+                    isChecked:newUser.isChecked,
+                    isMember:newUser.isMember
+                }
             });
         }
         else res.send("Tài khoản đã tồn tại");

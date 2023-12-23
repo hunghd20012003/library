@@ -36,7 +36,7 @@ function Login(pros){
                 password:user.password
             }});
             if(res.data.state==="ok"){
-                pros.state(res.data.userId);
+                pros.state(res.data.user);
             }
             else{
                 alert("Mật khẩu không chính xác hoặc tài khoản chưa đăng kí");
