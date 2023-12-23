@@ -58,6 +58,7 @@ function GioHang(props){
             const res1 = await axios.post("http://localhost:5000/loans/", bill);
             const res2 = await axios.post("http://localhost:5000/books/borrowBook", cart);
             console.log(res1.data);
+            alert("Mượn thành công")
         }
         else{
             alert("Tồn tại đơn chưa trả")
