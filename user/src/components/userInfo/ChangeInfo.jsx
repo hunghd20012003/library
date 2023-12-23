@@ -37,12 +37,7 @@ function ChangeInfo(pros){
             console.log(error);
         }
     }
-    useEffect(()=>{
-        if(pros.user!==null){
-          console.log(pros.user);
-          navigate("/change-info");
-        }
-      },[pros.user]);
+
   return (
     <div>
         <Navigator user={pros.user}></Navigator>

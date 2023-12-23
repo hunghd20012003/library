@@ -5,12 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navigator from "./common/Navigator";
 function HomePage(pros){
   const navigate=useNavigate();
-  useEffect(()=>{
-    if(pros.user!==null){
-      console.log(pros.user);
-      navigate("/homepage")
-    }
-  },[pros.user]);
+
     return (
 <div>
   <Navigator user={pros.user}></Navigator>

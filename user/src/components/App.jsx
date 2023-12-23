@@ -13,7 +13,6 @@ import { useEffect } from 'react'
 import axios from "axios";
 import { Link } from 'react-router-dom'
 import {BrowserRouter, Route,Navigate , Routes} from 'react-router-dom'
-import { CookiesProvider, useCookies } from "react-cookie";
 import TheTvBac from './buyCard/TheTvBac'
 import MuaTheTv from './buyCard/MuaTheTv'
 import GioHang from  './book/GioHang'
@@ -22,17 +21,11 @@ import XemChiTiet from './book/XemChiTiet'
 const URL="http://localhost:5000/";
 function App() {
   const [user, setUser] = useState(null);
-  const [cookies, setCookie] = useCookies(["user"]);
-  function handleLogin(user) {
-    console.log("cookie"+user);
-    setCookie("user", user, { path: "/" });
-  }
 	const getUser = async () => {
 		try {
 			const url = URL+`auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
       setUser(data.user);
-      handleLogin(user);
       console.log(user);
 		} catch (err) {
 			console.log(err);
@@ -46,13 +39,6 @@ function App() {
   function changeResetPassword(email){
     stateresetPassword(email);
   }
-  useEffect(()=>{
-    console.log(cookies.user)
-    if(cookies.user){
-      
-      setUser(cookies.user);
-    }
-  },[]);
   return (
     <React.StrictMode>
     <BrowserRouter>
