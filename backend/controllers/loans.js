@@ -80,12 +80,13 @@ export const getThisLoan = async (req, res) => {
                 break;
             }
         }
+        console.log(flag);
         if(flag){
-            console.log({tt: "NO", numOfBill: bills.length});
-            res.status(200).json({tt: "NO", numOfBill: bills.length})
+            console.log({tt: "YES", numOfBill: bills.length});
+            res.status(200).json({tt: "YES", numOfBill: bills.length})
         }else{
             console.log({tt: "NO", numOfBill: bills.length});
-            res.status(200).json({tt: "YES", numOfBill: bills.length})
+            res.status(200).json({tt: "NO", numOfBill: bills.length})
         }
     }catch(error){
 

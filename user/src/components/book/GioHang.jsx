@@ -38,15 +38,17 @@ function GioHang(props){
       }
       async function handleBorrow(){
         const res = await axios.get("http://localhost:5000/loans/getThisBill", {params: {userId: props.user.id}});
-        if(res.tt === 'OK' || res.numOfBill === 0){
+
+        if(res.data.tt === 'YES' || res.data.numOfBill === 0){
            var borrowedBook = [];
            for(let i = 0; i < cart.length; i++){
                 borrowedBook.push({bookId: cart[i]})
            } 
-           var billID = props.id + res.numOfBill;
+           var id = res.data.numOfBill + 1
+           var billID = props.user.id + id;
            const bill = {
                 billID: billID,
-                userId: props.id,
+                userId: props.user.id,
                 borrowDate: borrowDate,
                 returnDate: 'None',
                 expireDate: expireDate,
