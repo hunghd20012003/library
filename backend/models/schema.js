@@ -54,3 +54,7 @@ export const PurchaseHistory=mongoose.model("PurchaseHistory",{
     endDate: Date,
     status: String,
 });
+export const Notifications=mongoose.model("Notifications",{
+    title: String,
+    content: String,
+});

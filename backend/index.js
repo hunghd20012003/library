@@ -18,7 +18,9 @@ import auth from "./routers/auth.js"
 import planRouter from "./routers/plans.js";
 import userInfors from './routers/userInfors.js'
 import { Bill } from "./models/schema.js"
- dotenv.config();
+import addNotification from "./routers/addnotifications.js"
+import listNotification from "./routers/notifications.js" 
+dotenv.config();
 const app = express();
 const port = 5000;
 
@@ -158,6 +160,8 @@ app.use("/addusers",addUsers);
 app.use("/manageusers", manageUsers)
 app.use("/userInfors",userInfors);
 app.use('/api/has-active-plan', planRouter);
+app.use("/addnotifications", addNotification);
+app.use("/notifications", listNotification);
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });
