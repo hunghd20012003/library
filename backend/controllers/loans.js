@@ -92,3 +92,35 @@ export const getThisLoan = async (req, res) => {
 
     }
 };
+
+export const getNoneLoan = async (req, res) => {
+    try{
+        console.log(req.query);
+        const bills = await Bill.find({userId: req.query.userId});
+        var books = [];
+        for(let i = 0; i < bills.length; i++){
+            if(bills[i].returnDate === 'None'){
+                for(let j = 0; j < bills[i].borrowedBook.length; j++){
+                    books.push(bills[i].borrowedBook[j].bookId)
+                }
+                res.status(200).json({billID: bills[i].billID, borrowDate: bills[i].borrowDate, expireDate: bills[i].expireDate, books: books})
+                break;
+            }
+        }
+    }catch(error){
+
+    }
+};
+
+export const returnBill = async (req, res) => {
+    try{
+        console.log(req.body.billID);
+        const billID = req.body.billID;
+        const returnDate = req.body.returnDate
+        await Bill.updateOne({ billID: billID }, { $set: { state: 'Returned', returnDate: returnDate } });
+        res.status(200).json({tt:"ok"})
+    }catch(err){
+        res.status(500).json({tt:"err"})
+    }
+    
+};

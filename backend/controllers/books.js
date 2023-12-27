@@ -378,3 +378,19 @@ export const borrowBook = async (req, res) => {
 
   }
 }
+
+export const returnBook = async (req, res) => {
+  try{
+    console.log(req.body);
+    const cart = req.body;
+    await Promise.all(cart.map(async (bookId) => {
+      const result = await Book.findOneAndUpdate(
+        { bookId },
+        { $inc: { available: +1 } },
+        { new: true }
+      );
+    }));
+  }catch(error){
+
+  }
+}
