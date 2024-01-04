@@ -16,9 +16,13 @@ function Sach(props){
     const [books, setBooks] = useState([]);
     const [abc, setAbc] = useState(false);
     function handleAddToCart(s){
-        if (cart.length === 5 - props.penaltyNumber) {
+        if (cart.length === 5 - props.user.penaltyNumber) {
             alert("Số sách mượn quá giới hạn, chuyển đến trang giỏ sách để xác nhận mượn sách")
-          } else {
+          }
+        else if(books.filter(function (book){return book.bookId === s})[0].available === 0){
+            alert("Sách cần mượn đã hết")
+        }
+        else {
             cart.push(s);
           }
     }
@@ -41,14 +45,12 @@ function Sach(props){
     useEffect(() => {
         const getBooks = async () => {
             if(abc === true){
-                console.log("true");
                 const res = await axios.get("http://localhost:5000/books/userSearch", {params: {page: page, limit: 6, cau: cau}});
-                console.log(res.data);
                 setBooks(res.data);
             }else{
+                console.log(cart);
                 const res = await axios.get("http://localhost:5000/books/page", {params: {page: page, limit: 6}});
                 setBooks(res.data);
-                console.log(res.data);
             }
         }
         getBooks();

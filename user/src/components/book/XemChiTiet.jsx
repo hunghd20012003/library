@@ -28,9 +28,13 @@ function XemChiTiet(props){
         getBook();
     }, [id])
     function handleAddtoCart(){
-        if (cart.length === 5 - props.penaltyNumber) {
+        if (cart.length === 5 - props.user.penaltyNumber) {
             alert("Số sách mượn quá giới hạn, chuyển đến trang giỏ sách để xác nhận mượn sách")
-          } else {
+          }
+          else if(books.filter(function (book){return book.bookId === bookId})[0].available === 0){
+            alert("Sách cần mượn đã hết")
+        } 
+          else {
             cart.push(bookId);
           }
     }

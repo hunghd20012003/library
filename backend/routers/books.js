@@ -1,5 +1,5 @@
 import express from 'express';
-import { getBooks, createBook, updateBook, deleteBook, getBook, getPage, getLastPage, namePage, nameLastPage, bookIdPage, bookIdLastPage, authorPage, authorLastPage, publishorPage, publishorLastPage, categoryPage, categoryLastPage, userSearch, userSearchLastPage, getBookInTempCart, borrowBook } from '../controllers/books.js';
+import { getBooks, createBook, updateBook, deleteBook, getBook, getPage, getLastPage, namePage, nameLastPage, bookIdPage, bookIdLastPage, authorPage, authorLastPage, publishorPage, publishorLastPage, categoryPage, categoryLastPage, userSearch, userSearchLastPage, getBookInTempCart, borrowBook, returnBook } from '../controllers/books.js';
 
 const router = express.Router();
 
@@ -44,4 +44,6 @@ router.get("/userSearchLastPage", userSearchLastPage)
 router.get("/getTempCart", getBookInTempCart)
 
 router.post('/borrowBook', borrowBook)
+
+router.post('/returnBook', returnBook)
 export default router;
