@@ -8,12 +8,7 @@ function Persion(){
       <img className="border rounded-circle img-profile" src={image} />
     </a>
     <div className="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-      <a className="dropdown-item" href="/login">
-        <i className="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile </a>
-      <a className="dropdown-item" href="/login">
-        <i className="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings </a>
-      <a className="dropdown-item" href="/login">
-        <i className="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log </a>
+      
       <div className="dropdown-divider"></div>
       <a className="dropdown-item" href="/login">
         <i className="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout </a>

@@ -42,7 +42,8 @@ export const userlogin = async (req, res) => {
                             name:user.name,
                             penaltyNumber:user.penaltyNumber,
                             isChecked:user.isChecked,
-                            isMember:user.isMember
+                            isMember:user.isMember,
+                            avatar:user.avatar
                         }
                     });
                 }
@@ -100,21 +101,24 @@ export const userRegister = async (req, res) => {
                     penaltyNumber:0,
                     resetToken:"",
                     isChecked:false,
-                    isMember:true
+                    isMember:true,
+                    avatar:""
                 });
                 newUser.save().then((result)=>id=result._id).catch((err)=>console.log(err));
+                res.status(200).send({
+                    state:"oke",
+                    user:{
+                        id:id,
+                        name:newUser.name,
+                        penaltyNumber:newUser.penaltyNumber,
+                        isChecked:newUser.isChecked,
+                        isMember:newUser.isMember,
+                        avatar:newUser.avatar
+                    }
+                });
             });
             
-            res.status(200).send({
-                state:"oke",
-                user:{
-                    id:id,
-                    name:newUser.name,
-                    penaltyNumber:newUser.penaltyNumber,
-                    isChecked:newUser.isChecked,
-                    isMember:newUser.isMember
-                }
-            });
+            
         }
         else res.send("Tài khoản đã tồn tại");
     });

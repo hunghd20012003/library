@@ -43,8 +43,6 @@ function Navigator(){
          <a className="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="/login">
            <i className="fas fa-book-reader" style={{fontSize:"13px"}}></i>&nbsp;Books Loan </a>
          <div className="dropdown-menu">
-           <Link className="dropdown-item" to="/addloan" style={{paddingLeft:"30px"}}>
-             <i className="fas fa-plus"></i>&nbsp;Add new </Link>
              <Link className="dropdown-item" style={{paddingLeft:"30px"}} to="/manageloan">
              <i className="fas fa-bars"></i>&nbsp;Manage all </Link>
          </div>
@@ -59,6 +57,7 @@ function Navigator(){
              <i className="fas fa-bars"></i>&nbsp;Purchase History </Link>
          </div>
        </li>
+       <li class="nav-item"><Link class="nav-link" to="/addnotification"><i class="icon ion-android-notifications"></i>&nbsp;Notification<span></span></Link></li>
        <li className="nav-item"></li>
        <li className="nav-item"></li>
        <li className="nav-item"></li>

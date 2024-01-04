@@ -49,7 +49,7 @@ function InfoDashboard(pros){
     },[])
     return (
         <div className="col-md-6 col-xl-3 col1">
-        <div className="sidenav-header"><Link className="navbar-brand m-0" to="/main-info"><img className="navbar-brand-img h-100 w-15" src={avatar} alt='Ảnh' /><span className="ms-2 font-weight-bolder">{pros.user.name}</span></Link><span><br/><br/></span>
+        <div className="sidenav-header"><Link className="navbar-brand m-0" to="/main-info"><img className="navbar-brand-img h-100 w-15" src={pros.user.avatar||avatar} alt='Ảnh' /><span className="ms-2 font-weight-bolder">{pros.user.name}</span></Link><span><br/><br/></span>
             <ul className="navbar-nav">
                 <li className={colour.class1} ><Link className="nav-link active" to="/main-info"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-house-fill active icon icon-shape icon-sm shadow border-radius-md text-center me-2 d-flex align-items-center justify-content-center_1">
                             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"></path>

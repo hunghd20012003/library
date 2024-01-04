@@ -49,7 +49,7 @@ function App() {
         <Route path="/homepage" element={user?<HomePage user={user}></HomePage>:<Navigate to="/login"></Navigate>}></Route>
         <Route path='/main-info' element={user?<MainInfo user={user}></MainInfo>:<Navigate to="/login"></Navigate>}></Route>
         <Route path='/transaction-history' element={user?<TransactionHistory user={user}></TransactionHistory>:<Navigate to="/login"></Navigate>}></Route>
-        <Route path='/change-info' element={user?<ChangeInfo user={user}></ChangeInfo>:<Navigate to='/login'></Navigate>}></Route>
+        <Route path='/change-info' element={user?<ChangeInfo user={user} state={setUser}></ChangeInfo>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/muathetv' element={(user)?<MuaTheTv user={user} ></MuaTheTv>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/detail-purchase' element={(user)?<TheTvBac user={user} ></TheTvBac>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/cart' element={(user)?<GioHang user={user} ></GioHang>:<Navigate to='/login'></Navigate>}></Route>

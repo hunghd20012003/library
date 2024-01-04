@@ -90,9 +90,9 @@ function Navigator(pros){
                     <li className="nav-item dropdown no-arrow mx-1">
                         <div className="nav-item dropdown">
                         <a className="dropdown-toggle dropdowninfor" aria-expanded="false" data-bs-toggle="dropdown" href="#">{pros.user.name}&nbsp;
-                        <img src={avatar} /></a>
+                        <img src={pros.user.avatar||avatar} /></a>
                             <div className="dropdown-menu menusize"><Link className="dropdown-item fontItemUsser" to="/main-info">Thông tin cá nhân</Link>
-                            <a className="dropdown-item fontItemUsser" href="#"><i className="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></div>
+                            <a className="dropdown-item fontItemUsser" href="/login"><i className="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></div>
                         </div>
                     </li>
                 </ul>

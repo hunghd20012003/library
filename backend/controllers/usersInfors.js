@@ -2,6 +2,7 @@ import { User } from "../models/schema.js";
 import { PurchaseHistory } from "../models/schema.js";
 import bcrypt from 'bcrypt'
 const saltRounds=10;
+
 export const getUserInfor=async (req,res)=>{
     const userId = req.body.params.userId;
     User.findOne({_id:userId}).then((user)=>{
@@ -49,7 +50,17 @@ export const changeInfo=async (req,res)=>{
       if(req.body.params.name!=="")user.name=req.body.params.name;
       if(req.body.params.phone!=="")user.phone=req.body.params.phone;
       user.save();
-      res.send("ok");
+      res.send({
+        state:"ok",
+        user:{
+            id:userId,
+            name:user.name,
+            penaltyNumber:user.penaltyNumber,
+            isChecked:user.isChecked,
+            isMember:user.isMember,
+            avatar:user.avatar
+        }
+      });
     })
     .catch(()=>{res.send("error")});
 }
@@ -71,3 +82,30 @@ export const changePassword=async (req,res)=>{
         });
     })
 }
+export const changeAvatar=async (req,res)=>{
+    try {
+        // Lưu đường dẫn của ảnh đại diện vào database
+        const userId = req.body.params.userId; // Chắc chắn rằng bạn đã gửi userId từ frontend
+        const avatarPath = req.body.params.avatar;
+        User.findOne({_id:userId}).then((user)=>{
+            if(user){
+                user.avatar=avatarPath;
+                user.save();
+                res.status(200).send({
+                    state:"oke",
+                user:{
+                    id:userId,
+                    name:user.name,
+                    penaltyNumber:user.penaltyNumber,
+                    isChecked:user.isChecked,
+                    isMember:user.isMember,
+                    avatar:user.avatar
+                }
+                })
+            }
+        })
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      }
+};

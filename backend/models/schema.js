@@ -11,6 +11,7 @@ const userSchema=new mongoose.Schema({
     isChecked:Boolean,
     isMember:Boolean,
     resetToken:String,
+    avatar:String,
 });
 export const User=mongoose.model("User",userSchema);
 export const Admin=mongoose.model("Admin",{
@@ -27,7 +28,8 @@ export const Book=mongoose.model("Book",{
     category:String,
     amount:Number,
     available:Number,
-    description:String
+    description:String,
+    image:String,
 });
 export const Bill=mongoose.model("Bill",{
     billID:String,

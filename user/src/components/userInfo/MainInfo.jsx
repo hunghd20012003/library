@@ -55,7 +55,7 @@ function MainInfo(pros){
                             </div>
                         </div>
                         <div className="border rounded-0 shadow-lg divuserInfor1">
-                            <div><img className="imginfor" src={avatar} alt="Ảnh" /></div>
+                            <div><img className="imginfor" src={pros.user.avatar||avatar} alt="Ảnh" /></div>
                             <div><span className="spanname1">{info.name}</span></div>
                             <div><span className="spanname2">PHONE: {info.phone}</span></div>
                         </div>
