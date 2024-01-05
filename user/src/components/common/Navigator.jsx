@@ -25,7 +25,7 @@ function Navigator(pros){
         const fetchDataFromApi = async () => {
             const response = await axios.get(URL+"notifications/listnotification");
             try {
-                setNotifications(response.data);
+                setNotifications(response.data.reverse());
             } catch (error) {
                 console.log(error);
             }
@@ -34,13 +34,14 @@ function Navigator(pros){
     }, []);
 
     const renderNotifications = () => {
-        return notifications
+       
+        return notifications.slice(0,5)
                 .map((notificationData, index)=>(
               <><a  onClick={() => handleNotificationClick(notificationData)} className="dropdown-item d-flex align-items-center" href="#" >
                         <div className="me-3">
                             <div className="bg-warning icon-circle"><i className="fas fa-exclamation-triangle text-white"></i></div>
                         </div>
-                        <div><span className="small text-gray-500">December 2, 2019</span>
+                        <div><span className="small text-gray-500">{notificationData.date}</span>
                             <p>{notificationData.title}</p>
                         </div>
                     </a>
@@ -50,7 +51,7 @@ function Navigator(pros){
                         {selectedNotification && (
                         <div className="notification-details">
                             <h2>{selectedNotification.title}</h2>
-                            <p>{selectedNotification.content}</p>
+                            <pre>{selectedNotification.content}</pre>
                             <button onClick={closeModal}>Close</button>
                         </div>
                         )}

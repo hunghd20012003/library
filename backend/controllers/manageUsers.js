@@ -2,7 +2,7 @@ import { User} from '../models/schema.js';
 
 export const listUser = async (req, res) => {
     try {
-        const users = await User.find({isChecked:true});
+        const users = await User.find();
         res.status(200).send(users);
       } 
     catch (error) {

@@ -31,7 +31,21 @@ function AddNotification(){
     const [notification, setNotification] = useState({
         title: '',
         content:'',
+        date:''
     });
+
+    const getCurrentDate = () => {
+        const currentDate = new Date();
+
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1; 
+        const year = currentDate.getFullYear();
+      
+        // Tạo chuỗi ngày tháng
+        const dateString = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+      
+        return dateString;
+      };
 
     const update= (event, field) => {
         setNotification({ ...notification, [field]: event.target.value });
@@ -39,10 +53,15 @@ function AddNotification(){
     };
 
     const onUpdate = async (event) => {
+        event.preventDefault();
+        const date = getCurrentDate();
+        console.log(date);
+        const value =notification.content.replace(/\r?\n/g, '\n'); 
         try {
             const res = await axios.post(URL+"addnotifications/addnotification",{params: {
                 title: notification.title,
-                content: notification.content,
+                content: value,
+                date: date
             }});
             if(res.data=="oke"){
                 alert("Thêm thành công");
@@ -52,6 +71,7 @@ function AddNotification(){
             alert("Có lỗi");
             console.log(error);
         }
+        event.preventDefault();
     }
 
     return (

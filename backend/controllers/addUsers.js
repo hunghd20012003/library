@@ -10,6 +10,7 @@ export const addUser = async (req, res) => {
                 email:req.body.params.email,
                 password:req.body.params.password,
                 name: req.body.params.name,
+                phone: req.body.params.phonenumber,
                 isChecked: false,
                 isMember: false,
                 googleId:" ",

@@ -59,4 +59,5 @@ export const PurchaseHistory=mongoose.model("PurchaseHistory",{
 export const Notifications=mongoose.model("Notifications",{
     title: String,
     content: String,
+    date: String
 });
