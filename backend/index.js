@@ -18,7 +18,9 @@ import auth from "./routers/auth.js"
 import planRouter from "./routers/plans.js";
 import userInfors from './routers/userInfors.js'
 import { Bill } from "./models/schema.js"
- dotenv.config();
+import addNotification from "./routers/addnotifications.js"
+import listNotification from "./routers/notifications.js" 
+dotenv.config();
 const app = express();
 const port = 5000;
 
@@ -48,7 +50,7 @@ passport.use(
                   
                   return callback(null, existingUser);
                 }
-        
+				
                 // Nếu người dùng không tồn tại, tạo một bản ghi mới
                 const newUser = await User.create({ 
 					name:profile.displayName,
@@ -58,7 +60,9 @@ passport.use(
 			 		facebookId:"",
 					penaltyNumber:0,
 					isChecked:false,
-					isMember:true });
+					isMember:true,
+					avatar:""
+				 });
                 // Gọi callback để tiếp tục quá trình xác thực
                 return callback(null, newUser);
               } catch (err) {
@@ -85,7 +89,7 @@ passport.use(new FacebookStrategy({
 		  
 		  return callback(null, existingUser);
 		}
-
+		
 		// Nếu người dùng không tồn tại, tạo một bản ghi mới
 		const newUser = await User.create({ 
 			name:profile.displayName,
@@ -95,7 +99,9 @@ passport.use(new FacebookStrategy({
 			 facebookId:profile.id,
 			penaltyNumber:0,
 			isChecked:false,
-			isMember:true  });
+			isMember:true,
+			avatar:""
+		  });
 		return callback(null, newUser);
 	  } catch (err) {
 		// Xử lý lỗi nếu có
@@ -141,7 +147,7 @@ app.use((req, res, next) => {
 	return next();
   });
   
-app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.json({limit:"50mb"}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{
@@ -158,6 +164,8 @@ app.use("/addusers",addUsers);
 app.use("/manageusers", manageUsers)
 app.use("/userInfors",userInfors);
 app.use('/api/has-active-plan', planRouter);
+app.use("/addnotifications", addNotification);
+app.use("/notifications", listNotification);
 app.listen(port, () => {
     console.log(`API is running at http://localhost:${port}`);
 });

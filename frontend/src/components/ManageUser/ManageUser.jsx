@@ -52,7 +52,7 @@ function ManageUser(){
                 <td>{userData.name}</td>
                 <td>{userData.isMember ? "Member" : "Student"}</td>
                 <td>{userData.email}</td>
-                <td>{userData.phonenumber}</td>
+                <td>{userData.phone}</td>
                 <td className="text-center">∞</td>
                 <td className="text-center">0</td>
                 <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a>

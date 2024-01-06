@@ -1,5 +1,6 @@
 import express from 'express'
 import passport from 'passport';
+import fs from 'fs'
 const router = express.Router();
 router.get("/login/success", (req, res) => {
 	if (req.user) {
@@ -11,7 +12,8 @@ router.get("/login/success", (req, res) => {
 				name:req.user.name,
 				penaltyNumber:req.user.penaltyNumber,
 				isChecked:req.user.isChecked,
-                isMember:req.user.isMember
+                isMember:req.user.isMember,
+				avatar:req.user.avatar
 			},
 		});
 	} else {

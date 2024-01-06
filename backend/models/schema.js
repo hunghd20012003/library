@@ -11,6 +11,7 @@ const userSchema=new mongoose.Schema({
     isChecked:Boolean,
     isMember:Boolean,
     resetToken:String,
+    avatar:String,
 });
 export const User=mongoose.model("User",userSchema);
 export const Admin=mongoose.model("Admin",{
@@ -54,4 +55,9 @@ export const PurchaseHistory=mongoose.model("PurchaseHistory",{
     startDate: Date,
     endDate: Date,
     status: String,
+});
+export const Notifications=mongoose.model("Notifications",{
+    title: String,
+    content: String,
+    date: String
 });
