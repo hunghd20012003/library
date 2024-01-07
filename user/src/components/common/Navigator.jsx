@@ -20,7 +20,13 @@ function Navigator(pros){
       const closeModal = () => {
         setModalIsOpen(false);
       };
-
+        const logout = () => {
+            if(pros.user.googleId!== ""||pros.user.facebookId!=="")
+            {
+                window.open(`${URL}auth/logout`, "_self");
+            }
+           
+        };
     useEffect(() => {
         const fetchDataFromApi = async () => {
             const response = await axios.get(URL+"notifications/listnotification");
@@ -93,7 +99,9 @@ function Navigator(pros){
                         <a className="dropdown-toggle dropdowninfor" aria-expanded="false" data-bs-toggle="dropdown" href="#">{pros.user.name}&nbsp;
                         <img src={pros.user.avatar||avatar} /></a>
                             <div className="dropdown-menu menusize"><Link className="dropdown-item fontItemUsser" to="/main-info">Thông tin cá nhân</Link>
-                            <a className="dropdown-item fontItemUsser" href="/login"><i className="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></div>
+                            {(pros.user.googleId===""&&pros.user.facebookId==="")?<a className="dropdown-item fontItemUsser"  href="/login"><i className="fa fa-sign-out"></i>&nbsp;Đăng xuất</a>:
+                            <a className="dropdown-item fontItemUsser" onClick={logout}><i className="fa fa-sign-out"></i>&nbsp;Đăng xuất</a>}
+                            </div>
                         </div>
                     </li>
                 </ul>

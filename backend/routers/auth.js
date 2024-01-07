@@ -1,21 +1,27 @@
 import express from 'express'
 import passport from 'passport';
 import fs from 'fs'
+import { User } from '../models/schema.js';
 const router = express.Router();
 router.get("/login/success", (req, res) => {
 	if (req.user) {
-		res.status(200).json({
-			error: false,
-			message: "Successfully Loged In",
-			user: {
-				id:req.user._id,
-				name:req.user.name,
-				penaltyNumber:req.user.penaltyNumber,
-				isChecked:req.user.isChecked,
-                isMember:req.user.isMember,
-				avatar:req.user.avatar
-			},
-		});
+		User.findOne({_id:req.user}).then((user)=>{
+			res.status(200).json({
+				error: false,
+				message: "Successfully Loged In",
+				user: {
+					id:user._id,
+					name:user.name,
+					penaltyNumber:user.penaltyNumber,
+					isChecked:user.isChecked,
+					isMember:user.isMember,
+					avatar:user.avatar,
+					googleId:user.googleId,
+					facebookId:user.facebookId
+				},
+			});
+		})
+		
 	} else {
 		res.status(403).json({ error: true, message: "Not Authorized" });
 	}

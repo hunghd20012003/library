@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt'
 import { User } from '../models/schema.js';
 import { Admin } from '../models/schema.js';
 import nodemailer from 'nodemailer'
-import express from 'express'
 const saltRounds=10;
 export const adminlogin = async (req, res) => {
     console.log(req.body.params.password);
@@ -43,7 +42,9 @@ export const userlogin = async (req, res) => {
                             penaltyNumber:user.penaltyNumber,
                             isChecked:user.isChecked,
                             isMember:user.isMember,
-                            avatar:user.avatar
+                            avatar:user.avatar,
+                            googleId:user.googleId,
+				            facebookId:user.facebookId
                         }
                     });
                 }
@@ -113,7 +114,9 @@ export const userRegister = async (req, res) => {
                         penaltyNumber:newUser.penaltyNumber,
                         isChecked:newUser.isChecked,
                         isMember:newUser.isMember,
-                        avatar:newUser.avatar
+                        avatar:newUser.avatar,
+                        googleId:newUser.googleId,
+                        facebookId:newUser.facebookId
                     }
                 });
             });

@@ -47,8 +47,8 @@ passport.use(
                 const existingUser = await User.findOne({ googleId: profile.id });
         
                 if (existingUser) {
-                  
-                  return callback(null, existingUser);
+					console.log("Đã xử lý");
+                  return callback(null, existingUser._id);
                 }
 				
                 // Nếu người dùng không tồn tại, tạo một bản ghi mới
@@ -63,8 +63,9 @@ passport.use(
 					isMember:true,
 					avatar:""
 				 });
+				 
                 // Gọi callback để tiếp tục quá trình xác thực
-                return callback(null, newUser);
+                return callback(null, newUser._id);
               } catch (err) {
                 // Xử lý lỗi nếu có
                 return callback(err, null);
@@ -82,12 +83,11 @@ passport.use(new FacebookStrategy({
   async function (accessToken, refreshToken, profile, callback) {
 	try {
 		// Tìm kiếm người dùng trong cơ sở dữ liệu bằng Google ID
-		const existingUser = await User.findOne({ facebookId:profile.id}
-			);
+		const existingUser = await User.findOne({ facebookId:profile.id});
 
 		if (existingUser) {
 		  
-		  return callback(null, existingUser);
+		  return callback(null, existingUser._id);
 		}
 		
 		// Nếu người dùng không tồn tại, tạo một bản ghi mới
@@ -102,7 +102,7 @@ passport.use(new FacebookStrategy({
 			isMember:true,
 			avatar:""
 		  });
-		return callback(null, newUser);
+		return callback(null, newUser._id);
 	  } catch (err) {
 		// Xử lý lỗi nếu có
 		return callback(err, null);
@@ -147,7 +147,7 @@ app.use((req, res, next) => {
 	return next();
   });
   
-app.use(bodyParser.json({limit:"50mb"}));
+app.use(bodyParser.json({limit:"50mb"})); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect("mongodb+srv://hoangdinhhung20012003:hust20210399@cluster1.ixp6j2h.mongodb.net/").then(()=>{
