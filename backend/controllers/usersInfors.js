@@ -8,7 +8,7 @@ export const getUserInfor=async (req,res)=>{
     User.findOne({_id:userId}).then((user)=>{
         if(user){ 
          PurchaseHistory.findOne({userId:userId}).then((purchar)=>{
-          
+            console.log(user.email)
             if(purchar){
                res.send({
                         name:user.name,

@@ -374,6 +374,9 @@ export const borrowBook = async (req, res) => {
         { new: true }
       );
     }));
+    // console.log(cart[0]);
+    const book = await Book.findOne({bookId: cart[0]})
+    res.status(200).json(book)
   }catch(error){
 
   }

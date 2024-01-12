@@ -15,7 +15,7 @@ function BookDetail(props){
             }
         }
         deleteBook();
-        navigate("/addbook");
+        navigate("/homepage");
     }
     function handleEdit(){
         navigate(`/managebook/${props.bookId}`)

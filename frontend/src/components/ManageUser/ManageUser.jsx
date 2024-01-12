@@ -48,14 +48,14 @@ function ManageUser(){
           .map((userData, index) => (
             <tr key={index}>
               <td>{startIndex + index + 1}</td>
-                <td>{userData.id}</td>
+                <td>{userData._id}</td>
                 <td>{userData.name}</td>
                 <td>{userData.isMember ? "Member" : "Student"}</td>
                 <td>{userData.email}</td>
                 <td>{userData.phone}</td>
                 <td className="text-center">∞</td>
                 <td className="text-center">0</td>
-                <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a>
+                <td className="text-center">
                 <button className="btn btn-danger btn-sm border rounded-pill" type="button" onClick={() => onDelete(userData.email)}>Delete</button></td>
                 <Modal show={showModal} onHide={handleCancelDelete}>
                     <Modal.Header closeButton>
@@ -179,39 +179,6 @@ function ManageUser(){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>20215346</td>
-                                            <td>Trương Công Đạt</td>
-                                            <td>Student</td>
-                                            <td>Dat.tc215346@sis.hust.eduvn</td>
-                                            <td>0941118736</td>
-                                            <td className="text-center">∞</td>
-                                            <td className="text-center">0</td>
-                                            <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a><button className="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>20215452</td>
-                                            <td>Nguyễn Hoàng Phúc</td>
-                                            <td>Member</td>
-                                            <td>Phuc.NH215452@sis.hust.edu.vn</td>
-                                            <td>0912214811</td>
-                                            <td className="text-center">2 months</td>
-                                            <td className="text-center">0</td>
-                                            <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a><button className="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>20215451</td>
-                                            <td>Hoàng Công Phú</td>
-                                            <td>Student</td>
-                                            <td>Phu.HC215451@sis.hust.edu.vn</td>
-                                            <td>0971234213</td>
-                                            <td className="text-center">∞</td>
-                                            <td className="text-center">0</td>
-                                            <td className="text-center"><a className="btn btn-primary btn-sm border rounded-pill" role="button" href="add-user.html">Edit</a><button className="btn btn-danger btn-sm border rounded-pill" type="button">Delete</button></td>
-                                        </tr>
                                         {renderUsers()}
                                     </tbody>
                                 </table>

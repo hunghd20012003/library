@@ -96,7 +96,7 @@ const MuaTheTV = (pros) => {
                     <h4>{`${plan.amount}vnđ`}</h4>
                   </div>
                   {/* Nút mua thẻ */}
-                  {(pros.user.isMember===false)?<button
+                  {(pros.user.isMember===true)?<button
                     className="btn btn-outline-primary d-block w-100"
                     onClick={() => handleBuyNow(plan.planId, plan.title, plan.duration, plan.amount,userId)}
                   >

@@ -69,7 +69,7 @@ function EditBook(){
             
         }
         updateBook();
-        navigate("/");
+        navigate("/homepage");
     }
     return (
         <div id="wrapper">

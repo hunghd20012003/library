@@ -59,7 +59,7 @@ function AddBook(){
             }
         }
         addBook();
-        navigate("/")
+        navigate("/homepage")
     }
     return (
         <div id="wrapper">

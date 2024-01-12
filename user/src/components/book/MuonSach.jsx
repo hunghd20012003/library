@@ -61,12 +61,12 @@ function MuonSach(props){
                 state: 'Borrowed',
                 borrowedBook: borrowedBook
             }
-            const bookToBorrow = cart;
+            const res2 = await axios.post("http://localhost:5000/books/borrowBook", cart);
+            console.log(res2);
             console.log(cart);
             cart.splice(0, cart.length);
             console.log(cart);
             const res1 = await axios.post("http://localhost:5000/loans/", bill);
-            const res2 = await axios.post("http://localhost:5000/books/borrowBook", bookToBorrow);
             alert("Mượn thành công")
         }
         else{
