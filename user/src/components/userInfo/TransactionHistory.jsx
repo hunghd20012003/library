@@ -5,6 +5,7 @@ import InfoDashboard from './InfoDashboard'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import {React,useEffect,useState} from "react"
+import Footer from '../common/Footer'
 const URL="http://localhost:5000/";
 function TransactionHistory(pros){
      const navigate=useNavigate();
@@ -65,6 +66,7 @@ function TransactionHistory(pros){
             </div>
         </section>
     </main>
+    <Footer></Footer>
         </div>
     )
 }

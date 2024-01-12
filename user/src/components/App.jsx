@@ -18,6 +18,7 @@ import MuaTheTv from './buyCard/MuaTheTv'
 import GioHang from  './book/GioHang'
 import Sach from './book/Sach'
 import XemChiTiet from './book/XemChiTiet'
+import AboutUs from './AboutUs'
 const URL="http://localhost:5000/";
 function App() {
   const [user, setUser] = useState(null);
@@ -50,14 +51,15 @@ function App() {
         <Route path='/main-info' element={user?<MainInfo user={user}></MainInfo>:<Navigate to="/login"></Navigate>}></Route>
         <Route path='/transaction-history' element={user?<TransactionHistory user={user}></TransactionHistory>:<Navigate to="/login"></Navigate>}></Route>
         <Route path='/change-info' element={user?<ChangeInfo user={user} state={setUser}></ChangeInfo>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/muathetv' element={(user)?<MuaTheTv user={user} ></MuaTheTv>:<Navigate to='/login'></Navigate>}></Route>
+        <Route path='/muathetv' element={(user)?<MuaTheTv user={user} mainpage={true}></MuaTheTv>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/detail-purchase' element={(user)?<TheTvBac user={user} ></TheTvBac>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/cart' element={(user)?<GioHang user={user} ></GioHang>:<Navigate to='/login'></Navigate>}></Route>
-        <Route path='/book' element={(user)?<Sach user={user} ></Sach>:<Navigate to='/login'></Navigate>}></Route>
+        <Route path='/book' element={(user)?<Sach user={user} mainpage={true}></Sach>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/book-detail/:bookId' element={(user)?<XemChiTiet user={user} ></XemChiTiet>:<Navigate to='/login'></Navigate>}></Route>
         <Route path='/change-password' element={user?<ChangePassword user={user}></ChangePassword>:<Navigate to='/login'></Navigate>}></Route>
         <Route path="/forgot-password" element={<ForgotPassword user={user} resetPassword={resetPassword} reset={changeResetPassword}></ForgotPassword>}></Route>
         <Route path='/reset-password' element={<ConfirmPassword user={user} resetPassword={resetPassword} reset={changeResetPassword}></ConfirmPassword>}></Route>  
+        <Route path='/aboutus' element={user?<AboutUs user={user} ></AboutUs>:<Navigate to='/login'></Navigate>}></Route>  
       </Routes>
     </BrowserRouter>
     </React.StrictMode>

@@ -3,6 +3,7 @@ import axios from "axios";
 import Navigator from "../common/Navigator";
 import MuonSach from "./MuonSach";
 import TraSach from "./TraSach";
+import Footer from "../common/Footer";
 function GioHang(props){
     const [tt, setTT] = useState('');
     const [numOfBill, setNum] = useState([])
@@ -17,7 +18,8 @@ function GioHang(props){
     return (
         <div>
             <Navigator user={props.user}/>
-            {(tt === 'YES' || numOfBill === 0) ? <MuonSach id={props.user.id} /> : <TraSach id={props.user.id}/>}        
+            {(tt === 'YES' || numOfBill === 0) ? <MuonSach id={props.user.id} /> : <TraSach id={props.user.id}/>}
+            <Footer></Footer>        
         </div>
 
     )

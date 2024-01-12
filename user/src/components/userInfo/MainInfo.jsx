@@ -5,6 +5,7 @@ import InfoDashboard from "./InfoDashboard";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Footer from "../common/Footer";
 const URL="http://localhost:5000/";
 function MainInfo(pros){
     const navigate=useNavigate();
@@ -64,6 +65,7 @@ function MainInfo(pros){
             </div>
         </section>
     </main>
+    <Footer></Footer>
     </div>
  )
 }

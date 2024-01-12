@@ -74,7 +74,7 @@ function Navigator(pros){
                     <li className="nav-item">
                         <div></div><Link className="nav-link active" to="/homepage">Home</Link>
                     </li>
-                    <li className="nav-item"><a className="nav-link" href="about-us.html">ABOUT US</a></li>
+                    <li className="nav-item"><Link className="nav-link" to="/aboutus">ABOUT US</Link></li>
                     <li className="nav-item"><Link className="nav-link" to="/book">SÁCH</Link></li>
                     <li className="nav-item"><Link className="nav-link" to="/muathetv">THẺ THÀNH VIÊN</Link></li>
                     <li className="nav-item"><Link className="nav-link" to="/cart">GIỎ HÀNG&nbsp;<i className="fa fa-shopping-cart text-primary"></i></Link></li>

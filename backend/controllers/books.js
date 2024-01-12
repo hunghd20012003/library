@@ -394,3 +394,14 @@ export const returnBook = async (req, res) => {
 
   }
 }
+export const totalBook=async(req,res)=>{
+  Book.find().then(result=>{
+    res.status(200).json({
+        error: false,
+        message: result.length,
+    });
+}).catch(err=>{
+    console.log(err);
+        res.status(500);
+}); 
+}

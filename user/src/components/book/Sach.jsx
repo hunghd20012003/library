@@ -2,6 +2,7 @@ import Navigator from "../common/Navigator"
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "../common/Footer";
 export var cart=[];
 function Sach(props){
     let navigate = useNavigate();
@@ -129,7 +130,7 @@ function Sach(props){
     }
     return (
         <div>
-           <Navigator user={props.user}/>
+           {props.mainpage? <Navigator user={props.user}/>:null}
             <main className="page catalog-page">
                 <section className="clean-block clean-catalog dark">
                     <div className="container">
@@ -184,47 +185,7 @@ function Sach(props){
                     </div>
                 </section>
             </main>
-            <footer className="page-footer dark">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <h5>Get started</h5>
-                            <ul>
-                                <li><a href="http://localhost:4000/">Home</a></li>
-                                <li><a href="http://localhost:4000/">Sign up</a></li>
-                                <li><a href="http://localhost:4000/">Downloads</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-sm-3">
-                            <h5>About us</h5>
-                            <ul>
-                                <li><a href="http://localhost:4000/">Company Information</a></li>
-                                <li><a href="http://localhost:4000/">Contact us</a></li>
-                                <li><a href="http://localhost:4000/">Reviews</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-sm-3">
-                            <h5>Support</h5>
-                            <ul>
-                                <li><a href="http://localhost:4000/">FAQ</a></li>
-                                <li><a href="http://localhost:4000/">Help desk</a></li>
-                                <li><a href="http://localhost:4000/">Forums</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-sm-3">
-                            <h5>Legal</h5>
-                            <ul>
-                                <li><a href="http://localhost:4000/">Terms of Service</a></li>
-                                <li><a href="http://localhost:4000/">Terms of Use</a></li>
-                                <li><a href="http://localhost:4000/">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-copyright">
-                    <p>© 2023 Copyright Text</p>
-                </div>
-            </footer>
+            {props.mainpage?<Footer></Footer>:null}
         </div>
     )
 }

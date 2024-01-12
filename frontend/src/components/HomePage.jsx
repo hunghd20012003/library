@@ -22,7 +22,7 @@ function HomePage(props){
                         <Earning></Earning>
                         <Revenue></Revenue>
                     </div>
-                    <Table></Table>
+                    
                 </div>
             </div>
             <Footer></Footer>

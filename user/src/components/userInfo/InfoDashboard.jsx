@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import avatar from '../../img/koduck.png'
 import {React, useState,useEffect} from 'react'
+import Footer from "../common/Footer";
 function InfoDashboard(pros){
     const classOne="border rounded-pill border-3 shadow nav-item-user-1"
     const classTwo="bg-warning-subtle border rounded-pill border-3 shadow nav-item-user-1"

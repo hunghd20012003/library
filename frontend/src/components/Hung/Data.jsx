@@ -78,7 +78,7 @@ function Data(){
             <div className="row g-0 align-items-center">
               <div className="col-auto">
                 <div className="text-dark fw-bold h5 mb-0 me-3">
-                  <span>50%</span>
+                  <span>50000</span>
                 </div>
               </div>
               <div className="col">
@@ -106,7 +106,7 @@ function Data(){
               <span>total books loan</span>
             </div>
             <div className="text-dark fw-bold h5 mb-0">
-              <span>18</span>
+              <span>5</span>
             </div>
           </div>
           <div className="col-auto">

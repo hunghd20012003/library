@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigator from '../common/Navigator';
+import Footer from '../common/Footer';
 const TheTvBac = (pros) => {
   return (
     <div>
@@ -34,6 +35,7 @@ const TheTvBac = (pros) => {
         </div>
       </section>
     </main>
+    <Footer></Footer>
     </div>
     
   );

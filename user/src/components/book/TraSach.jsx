@@ -32,7 +32,7 @@ function TraSach(props){
                     <div className="col-md-3" style={{width: '255.75px',transform: 'translateX(-50px)'}}>
                         <div className="product-image"><img className="img-fluid d-block mx-auto image" src={props.image} alt="xyz"/></div>
                     </div>
-                    <div className="col-md-5 col-xxl-3 product-info" style={{transform: 'scale(1.39)',width: '254.75px'}}><a className="product-name" href="http://localhost:3000/">{props.name}</a>
+                    <div className="col-md-5 col-xxl-3 product-info" style={{transform: 'scale(1.39)',width: '254.75px'}}><a className="product-name">{props.name}</a>
                         <div className="product-specs">
                             <div><span>Tác giả:&nbsp;</span><span className="value">{props.author}</span></div>
                             <div><span>Thể loại:&nbsp;</span><span className="value">{props.category}</span></div>

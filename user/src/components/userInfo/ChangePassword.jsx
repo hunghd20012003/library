@@ -3,6 +3,7 @@ import InfoDashboard from "./InfoDashboard"
 import {React, useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
+import Footer from "../common/Footer"
 const URL="http://localhost:5000/";
 function ChangePassword(pros){
     const navigate=useNavigate();
@@ -80,6 +81,7 @@ function ChangePassword(pros){
             </div>
         </section>
     </main>
+    <Footer></Footer>
         </div>
     )
 }

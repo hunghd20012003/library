@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navigator from '../common/Navigator';
 import { Link } from 'react-router-dom';
+import Footer from '../common/Footer';
 const URL = "http://localhost:5000/";
 
 const api = axios.create({ baseURL: URL }); // Sửa URL thành baseURL
@@ -66,7 +67,7 @@ const MuaTheTV = (pros) => {
   
     return (
       <div>
-      <Navigator user={pros.user}></Navigator>
+      {pros.mainpage?<Navigator user={pros.user}></Navigator>:null}
       <main className="page pricing-table-page">
         <section className="clean-block clean-pricing dark">
           <div className="container">
@@ -95,12 +96,12 @@ const MuaTheTV = (pros) => {
                     <h4>{`${plan.amount}vnđ`}</h4>
                   </div>
                   {/* Nút mua thẻ */}
-                  <button
+                  {(pros.user.isMember===false)?<button
                     className="btn btn-outline-primary d-block w-100"
                     onClick={() => handleBuyNow(plan.planId, plan.title, plan.duration, plan.amount,userId)}
                   >
                     BUY NOW
-                  </button>
+                  </button>:null}
                 </div>
               </div>
             ))}
@@ -108,6 +109,7 @@ const MuaTheTV = (pros) => {
         </div>
         </section>
       </main>
+      {pros.mainpage?<Footer></Footer>:null}
     </div>
     );
   };

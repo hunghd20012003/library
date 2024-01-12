@@ -3,10 +3,15 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import Navigator from "./common/Navigator";
+import Sach from "./book/Sach";
+import MuaTheTV from "./buyCard/MuaTheTv";
+import Footer from "./common/Footer";
 function HomePage(pros){
   const navigate=useNavigate();
-
-    return (
+  function functionClick(){
+    navigate("/book");
+  }
+      return (
 <div>
   <Navigator user={pros.user}></Navigator>
   <main className="page landing-page">
@@ -23,13 +28,17 @@ function HomePage(pros){
       Nơi cung cấp tài liệu học thuật, truyện tranh, tiểu thuyết và các loại
       sách khác...
     </p>
-    <button className="btn btn-outline-light btn-lg" type="button">
+    <button className="btn btn-outline-light btn-lg" type="button" onClick={functionClick}>
       TÌM HIỂU THÊM
     </button>
   </div>
 </section>
   </main>
+  <Sach user={pros.user} mainpage={false}></Sach>
+  <MuaTheTV user={pros.user} mainpage={false}></MuaTheTV>
+  <Footer ></Footer>
 </div>
+
 );
 }
 export default HomePage;
