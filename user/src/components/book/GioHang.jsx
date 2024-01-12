@@ -16,11 +16,14 @@ function GioHang(props){
         getBorrow();
     }, [])
     return (
-        <div>
+      <div>
+          <div>
             <Navigator user={props.user}/>
             {(tt === 'YES' || numOfBill === 0) ? <MuonSach id={props.user.id} /> : <TraSach id={props.user.id}/>}
-            <Footer></Footer>        
+                   
         </div>
+        <Footer></Footer> 
+      </div>
 
     )
 }

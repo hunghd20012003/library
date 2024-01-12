@@ -42,10 +42,11 @@ passport.use(
 			scope: ["profile", "email"],
 		},
         async function (accessToken, refreshToken, profile, callback) {
+			console.log(profile)
             try {
                 // Tìm kiếm người dùng trong cơ sở dữ liệu bằng Google ID
                 const existingUser = await User.findOne({ googleId: profile.id });
-        
+         
                 if (existingUser) {
 					console.log("Đã xử lý");
                   return callback(null, existingUser._id);
@@ -54,7 +55,7 @@ passport.use(
                 // Nếu người dùng không tồn tại, tạo một bản ghi mới
                 const newUser = await User.create({ 
 					name:profile.displayName,
-					email:"",
+					email:profile.emails[0].value,
 					password:"",
 					googleId: profile.id,
 			 		facebookId:"",
@@ -81,6 +82,7 @@ passport.use(new FacebookStrategy({
     callbackURL: "/auth/facebook/library"
   },
   async function (accessToken, refreshToken, profile, callback) {
+	console.log(profile)
 	try {
 		// Tìm kiếm người dùng trong cơ sở dữ liệu bằng Google ID
 		const existingUser = await User.findOne({ facebookId:profile.id});
