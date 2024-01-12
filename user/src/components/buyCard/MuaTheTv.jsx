@@ -13,6 +13,7 @@ const MuaTheTV = (pros) => {
     const [plans, setPlans] = useState([]);
   
     useEffect(() => {
+      console.log(pros.user)
         // Fetch plans when the component mounts
         const fetchData = async () => {
           try {
@@ -48,7 +49,7 @@ const MuaTheTV = (pros) => {
                 planAmount,
                 userId,
               });
-          
+             console.log(purchaseResponse.status)
               if (purchaseResponse.status === 200) {
                 setShowPaymentGuide(true);
                 navigate('/detail-purchase');

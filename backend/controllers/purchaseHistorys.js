@@ -25,6 +25,7 @@ export const getLimitedPurchaseHistory = async (req, res) => {
   }
 };
 export const handlePurchase = async (req, res) => {
+  console.log(req.body)
   const { planId, planTitle, planDuration, planAmount, userId } = req.body;
 
   try {
