@@ -58,9 +58,9 @@ export const changeInfo=async (req,res)=>{
             penaltyNumber:user.penaltyNumber,
             isChecked:user.isChecked,
             isMember:user.isMember,
-            avatar:user.avatar,
             googleId:user.googleId,
-            facebookId:user.facebookId
+            facebookId:user.facebookId,
+            avatar:user.avatar
         }
       });
     })
@@ -99,6 +99,8 @@ export const changeAvatar=async (req,res)=>{
                     id:userId,
                     name:user.name,
                     penaltyNumber:user.penaltyNumber,
+                    googleId:user.googleId,
+                    facebookId:user.facebookId,
                     isChecked:user.isChecked,
                     isMember:user.isMember,
                     avatar:user.avatar,
