@@ -58,7 +58,9 @@ export const changeInfo=async (req,res)=>{
             penaltyNumber:user.penaltyNumber,
             isChecked:user.isChecked,
             isMember:user.isMember,
-            avatar:user.avatar
+            avatar:user.avatar,
+            googleId:user.googleId,
+            facebookId:user.facebookId
         }
       });
     })
@@ -99,7 +101,9 @@ export const changeAvatar=async (req,res)=>{
                     penaltyNumber:user.penaltyNumber,
                     isChecked:user.isChecked,
                     isMember:user.isMember,
-                    avatar:user.avatar
+                    avatar:user.avatar,
+                    googleId:user.googleId,
+                    facebookId:user.facebookId
                 }
                 })
             }

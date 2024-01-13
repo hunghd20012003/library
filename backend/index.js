@@ -54,7 +54,7 @@ passport.use(
                 // Nếu người dùng không tồn tại, tạo một bản ghi mới
                 const newUser = await User.create({ 
 					name:profile.displayName,
-					email:"",
+					email:profile.emails[0].value,
 					password:"",
 					googleId: profile.id,
 			 		facebookId:"",
